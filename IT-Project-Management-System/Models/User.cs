@@ -54,12 +54,12 @@ namespace IT_Project_Management_System.Models
     public enum Language
     {
         [Display(Name = "English")]
-        English,
+        en,
 
         [Display(Name = "Spanish")]
-        Spanish,
+        es,
 
         [Display(Name = "French")]
-        French
+        fr
     }
 }

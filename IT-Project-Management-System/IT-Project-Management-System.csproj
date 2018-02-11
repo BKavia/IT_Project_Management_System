@@ -112,13 +112,9 @@
     <Compile Include="Migrations\201801282151366_InitialCreate.Designer.cs">
       <DependentUpon>201801282151366_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802042043570_AddModels.cs" />
-    <Compile Include="Migrations\201802042043570_AddModels.Designer.cs">
-      <DependentUpon>201802042043570_AddModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802042131380_UpdateUser.cs" />
-    <Compile Include="Migrations\201802042131380_UpdateUser.Designer.cs">
-      <DependentUpon>201802042131380_UpdateUser.cs</DependentUpon>
+    <Compile Include="Migrations\201802111657513_updatelanguage.cs" />
+    <Compile Include="Migrations\201802111657513_updatelanguage.Designer.cs">
+      <DependentUpon>201802111657513_updatelanguage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Task.cs" />
@@ -147,6 +143,7 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Template\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -164,11 +161,8 @@
     <EmbeddedResource Include="Migrations\201801282151366_InitialCreate.resx">
       <DependentUpon>201801282151366_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802042043570_AddModels.resx">
-      <DependentUpon>201802042043570_AddModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802042131380_UpdateUser.resx">
-      <DependentUpon>201802042131380_UpdateUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802111657513_updatelanguage.resx">
+      <DependentUpon>201802111657513_updatelanguage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

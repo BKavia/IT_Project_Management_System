@@ -31,10 +31,10 @@ namespace IT_Project_Management_System.Models
 
         [Required(ErrorMessage = "Start Date is required")]
         [Display(Name = "Start Date")]
-        public virtual System.DateTime ProjectStartDate { get; set; }
+        public virtual DateTime ProjectStartDate { get; set; }
 
         [Display(Name = "End Date")]
-        public virtual System.DateTime ProjectEndDate { get; set; }
+         public virtual DateTime ProjectEndDate { get; set; }
 
         [Required(ErrorMessage = "Project Status is required")]
         [Display(Name = "Project Status")]
