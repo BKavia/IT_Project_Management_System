@@ -1,82 +1,75 @@
 ﻿@model IT_Project_Management_System.Models.Task
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Template/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Details</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Task</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ProjectID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ProjectID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.TaskName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TaskName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.TaskDescription)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TaskDescription)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.TaskStartDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TaskStartDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.TaskEndDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TaskEndDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.TaskStatus)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TaskStatus)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AssignedUserID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AssignedUserID)
-            </dd>
-    
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.TaskID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+<div>
+    <h4>Task</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedUserID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TaskID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
