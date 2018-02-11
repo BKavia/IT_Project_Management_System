@@ -4,9 +4,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/CSS/main.css")" />
 </head>
 <body>
     IT Project Management System
+    <nav>
+        <a href="/projects/">Projects</a> |
+        <a href="/users/">Users</a> |
+    </nav>
     <div>
         @RenderBody()
     </div>
