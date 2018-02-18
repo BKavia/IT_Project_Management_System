@@ -34,6 +34,14 @@ namespace IT_Project_Management_System.Models
         [Required(ErrorMessage = "The User type is required")]
         public virtual UserType UserType { get; set; }
 
+        [Display(Name = "Username")]
+        [Required(ErrorMessage = "The Username is required")]
+        public virtual String UserName { get; set; }
+
+        [Display(Name = "Password")]
+        [Required(ErrorMessage = "The User password is required")]
+        public virtual String UserPassword { get; set; }
+        
         [Display(Name = "Language")]
         [Required(ErrorMessage = "The Language is required")]
         public virtual Language Language { get; set; }

@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="@Url.Content("~/CSS/main.css")" />
 </head>
 <body>
-    IT Project Management System
-    <nav>
-        <a href="/projects/">Projects</a> |
-        <a href="/users/">Users</a> |
-    </nav>
+    <header>
+        IT Project Management System
+        <nav>
+            <a href="/projects/">Projects</a> |
+            <a href="/users/">Users</a> |
+        </nav>
+    </header>
     <div>
         @RenderBody()
     </div>
-    &copy; All rights reserved 2018
+    <footer>
+        &copy; All rights reserved 2018
+    </footer>
 </body>
 </html>

@@ -1,6 +1,16 @@
 ﻿body {
     background-color:burlywood;
+    border:solid thin;
+}
+header{
+    background-color:azure;
 }
 nav {
     display: block;
+}
+.field-validation-error {
+    color:red;
+}
+.input-validation-error{
+    border-color:red;
 }

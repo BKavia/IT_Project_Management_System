@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -116,6 +118,14 @@
     <Compile Include="Migrations\201802111657513_updatelanguage.cs" />
     <Compile Include="Migrations\201802111657513_updatelanguage.Designer.cs">
       <DependentUpon>201802111657513_updatelanguage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181524424_updateuser.cs" />
+    <Compile Include="Migrations\201802181524424_updateuser.Designer.cs">
+      <DependentUpon>201802181524424_updateuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181635056_updatelogin.cs" />
+    <Compile Include="Migrations\201802181635056_updatelogin.Designer.cs">
+      <DependentUpon>201802181635056_updatelogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Task.cs" />
@@ -145,6 +155,7 @@
     <Content Include="Views\Tasks\Details.cshtml" />
     <Content Include="Views\Tasks\Edit.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,6 +176,12 @@
     <EmbeddedResource Include="Migrations\201802111657513_updatelanguage.resx">
       <DependentUpon>201802111657513_updatelanguage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181524424_updateuser.resx">
+      <DependentUpon>201802181524424_updateuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181635056_updatelogin.resx">
+      <DependentUpon>201802181635056_updatelogin.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -184,8 +201,7 @@
           <IISUrl>http://localhost:60217/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost:60217/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
