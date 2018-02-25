@@ -20,6 +20,15 @@ namespace IT_Project_Management_System.Models
         [MaxLength(30)]
         public virtual string LastName { get; set; }
 
+        [Display(Name = "Name")]
+        public string FullName {
+            get
+            {
+                return this.FirstName + " " + this.LastName;
+            }
+        }
+
+
         [Display(Name = "Email address")]
         [Required(ErrorMessage = "The Email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
@@ -40,6 +49,7 @@ namespace IT_Project_Management_System.Models
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "The User password is required")]
+        [DataType(DataType.Password)]
         public virtual String UserPassword { get; set; }
         
         [Display(Name = "Language")]
@@ -49,14 +59,14 @@ namespace IT_Project_Management_System.Models
 
     public enum UserType
     {
+        [Display(Name = "Normal User")]
+        NormalUser,
+
         [Display(Name = "Administrator")]
         Administrator,
 
         [Display(Name = "Project Manager")]
-        ProjectManager,
-
-        [Display(Name = "Normal User")]
-        NormalUser
+        ProjectManager
     }
 
     public enum Language

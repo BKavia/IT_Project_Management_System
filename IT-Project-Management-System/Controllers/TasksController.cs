@@ -14,10 +14,17 @@ namespace IT_Project_Management_System.Controllers
     {
         private SystemContext db = new SystemContext();
 
+        public ActionResult ViewProjectTasks(int projectId)
+        {
+            var tasks = db.Tasks.Where(t => t.ProjectID == projectId).Include(t => t.Project).Include(t => t.User);
+            return View("Index",tasks.ToList());
+        }
+
         // GET: Tasks
         public ActionResult Index()
         {
-            return View(db.Tasks.ToList());
+            var tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
+            return View(tasks.ToList());
         }
 
         // GET: Tasks/Details/5
@@ -38,6 +45,8 @@ namespace IT_Project_Management_System.Controllers
         // GET: Tasks/Create
         public ActionResult Create()
         {
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey");
+            ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.NormalUser), "UserID", "FullName");
             return View();
         }
 
@@ -46,7 +55,7 @@ namespace IT_Project_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TaskID,ProjectID,TaskName,TaskDescription,TaskStartDate,TaskEndDate,TaskStatus,AssignedUserID")] Task task)
+        public ActionResult Create([Bind(Include = "TaskID,ProjectID,TaskName,TaskDescription,TaskStartDate,TaskEndDate,TaskStatus,UserID")] Task task)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +64,8 @@ namespace IT_Project_Management_System.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey", task.ProjectID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", task.UserID);
             return View(task);
         }
 
@@ -70,6 +81,8 @@ namespace IT_Project_Management_System.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey", task.ProjectID);
+            ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.NormalUser), "UserID", "FullName", task.UserID);
             return View(task);
         }
 
@@ -78,7 +91,7 @@ namespace IT_Project_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TaskID,ProjectID,TaskName,TaskDescription,TaskStartDate,TaskEndDate,TaskStatus,AssignedUserID")] Task task)
+        public ActionResult Edit([Bind(Include = "TaskID,ProjectID,TaskName,TaskDescription,TaskStartDate,TaskEndDate,TaskStatus,UserID")] Task task)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +99,8 @@ namespace IT_Project_Management_System.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey", task.ProjectID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", task.UserID);
             return View(task);
         }
 

@@ -13,7 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectID)
+            @Html.DisplayNameFor(model => model.Project.ProjectKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FullName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaskName)
@@ -30,41 +33,39 @@
         <th>
             @Html.DisplayNameFor(model => model.TaskStatus)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssignedUserID)
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssignedUserID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TaskID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TaskID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TaskID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaskID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TaskID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaskID })
+            </td>
+        </tr>
+    }
 
 </table>

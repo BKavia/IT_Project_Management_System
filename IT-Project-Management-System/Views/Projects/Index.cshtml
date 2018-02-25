@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectManagerID)
+            @Html.DisplayNameFor(model => model.User.FullName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProjectKey)
@@ -39,7 +39,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjectManagerID)
+            @Html.DisplayFor(modelItem => item.User.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProjectKey)
@@ -60,9 +60,13 @@
             @Html.DisplayFor(modelItem => item.ProjectStatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
+            
+            @Html.ActionLink("View Tasks", "ViewProjectTasks", "Tasks", new { projectId = item.ProjectID }, null) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProjectID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProjectID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProjectID })
+
+
         </td>
     </tr>
 }

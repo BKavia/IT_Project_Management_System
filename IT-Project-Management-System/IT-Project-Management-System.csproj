@@ -111,22 +111,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801282151366_InitialCreate.cs" />
-    <Compile Include="Migrations\201801282151366_InitialCreate.Designer.cs">
-      <DependentUpon>201801282151366_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802111657513_updatelanguage.cs" />
-    <Compile Include="Migrations\201802111657513_updatelanguage.Designer.cs">
-      <DependentUpon>201802111657513_updatelanguage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181524424_updateuser.cs" />
-    <Compile Include="Migrations\201802181524424_updateuser.Designer.cs">
-      <DependentUpon>201802181524424_updateuser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181635056_updatelogin.cs" />
-    <Compile Include="Migrations\201802181635056_updatelogin.Designer.cs">
-      <DependentUpon>201802181635056_updatelogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\User.cs" />
@@ -140,22 +124,22 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Template\_Layout.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Delete.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Tasks\Create.cshtml" />
     <Content Include="Views\Tasks\Delete.cshtml" />
     <Content Include="Views\Tasks\Details.cshtml" />
     <Content Include="Views\Tasks\Edit.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -168,20 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801282151366_InitialCreate.resx">
-      <DependentUpon>201801282151366_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802111657513_updatelanguage.resx">
-      <DependentUpon>201802111657513_updatelanguage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181524424_updateuser.resx">
-      <DependentUpon>201802181524424_updateuser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181635056_updatelogin.resx">
-      <DependentUpon>201802181635056_updatelogin.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

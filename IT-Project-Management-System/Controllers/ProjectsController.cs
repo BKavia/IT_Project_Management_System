@@ -17,7 +17,8 @@ namespace IT_Project_Management_System.Controllers
         // GET: Projects
         public ActionResult Index()
         {
-            return View(db.Projects.ToList());
+            var projects = db.Projects.Include(p => p.User);
+            return View(projects.ToList());
         }
 
         // GET: Projects/Details/5
@@ -38,6 +39,7 @@ namespace IT_Project_Management_System.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
+            ViewBag.UserID = new SelectList(db.Users.Where(p => p.UserType == UserType.ProjectManager), "UserID", "FullName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace IT_Project_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProjectID,ProjectManagerID,ProjectKey,ProjectName,ProjectDescription,ProjectStartDate,ProjectEndDate,ProjectStatus")] Project project)
+        public ActionResult Create([Bind(Include = "ProjectID,UserID,ProjectKey,ProjectName,ProjectDescription,ProjectStartDate,ProjectEndDate,ProjectStatus")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace IT_Project_Management_System.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserID = new SelectList(db.Users.Where(p => p.UserType == UserType.ProjectManager), "UserID", "FullName", project.UserID);
             return View(project);
         }
 
@@ -70,6 +73,7 @@ namespace IT_Project_Management_System.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserID = new SelectList(db.Users.Where(p => p.UserType == UserType.ProjectManager), "UserID", "FullName", project.UserID);
             return View(project);
         }
 
@@ -78,7 +82,7 @@ namespace IT_Project_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProjectID,ProjectManagerID,ProjectKey,ProjectName,ProjectDescription,ProjectStartDate,ProjectEndDate,ProjectStatus")] Project project)
+        public ActionResult Edit([Bind(Include = "ProjectID,UserID,ProjectKey,ProjectName,ProjectDescription,ProjectStartDate,ProjectEndDate,ProjectStatus")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace IT_Project_Management_System.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserID = new SelectList(db.Users.Where(p => p.UserType == UserType.ProjectManager), "UserID", "FullName", project.UserID);
             return View(project);
         }
 

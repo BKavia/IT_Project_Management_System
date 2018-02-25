@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<IT_Project_Management_System.Models.User>
 
 @{
-    ViewBag.Title = "Users";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Template/_Layout.cshtml";
 }
 
-<h2>Users</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,6 +26,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPassword)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Language)
@@ -49,6 +55,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPassword)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Language)

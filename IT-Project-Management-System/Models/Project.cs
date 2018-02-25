@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,8 +13,10 @@ namespace IT_Project_Management_System.Models
         public virtual int ProjectID { get; set; }
 
         [Required(ErrorMessage = "Project Manager is required")]
+        [ForeignKey("User")]
+        public int? UserID { get; set; }
         [Display(Name = "Project Manager")]
-        public virtual int ProjectManagerID { get; set; }
+        public virtual User User { get; set; }
 
         [Required(ErrorMessage = "Key is required")]
         [Display(Name = "Key")]
@@ -31,10 +35,15 @@ namespace IT_Project_Management_System.Models
 
         [Required(ErrorMessage = "Start Date is required")]
         [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public virtual DateTime ProjectStartDate { get; set; }
+        
 
         [Display(Name = "End Date")]
-         public virtual DateTime ProjectEndDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public virtual DateTime? ProjectEndDate { get; set; }
 
         [Required(ErrorMessage = "Project Status is required")]
         [Display(Name = "Project Status")]
