@@ -1,0 +1,34 @@
+﻿@model IEnumerable<IT_Project_Management_System.Models.Document>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Template/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DocumentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DocumentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DocumentID })
+        </td>
+    </tr>
+}
+
+</table>

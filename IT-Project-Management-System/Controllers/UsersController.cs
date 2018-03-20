@@ -10,14 +10,25 @@ using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
-    public class UsersController : Controller
+    
+    public class UsersController : BaseController
     {
         private SystemContext db = new SystemContext();
 
         // GET: Users
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Users.ToList());
+            ViewBag.ShowSearchBox = true;
+            var users = db.Users.AsQueryable();
+            if (searchString != null)
+            {
+                users = users.Where(s => s.UserName.Contains(searchString) ||
+                 s.FirstName.Contains(searchString) ||
+                 s.LastName.Contains(searchString) ||
+                  s.Email.Contains(searchString)
+                 );
+            }
+            return View(users.ToList());
         }
 
         // GET: Users/Details/5
@@ -122,6 +133,31 @@ namespace IT_Project_Management_System.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public JsonResult DoesUserExist(string Username)
+        {
+            var userFound = !db.Users.Any(u => u.UserName == Username);
+            return Json(userFound,JsonRequestBehavior.AllowGet);
+        }
+        // GET: Users/EditProfile/5
+        public ActionResult EditProfile()
+        {
+            User loggedUser = (User)Session["loggedUser"]; 
+            return View(loggedUser);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile([Bind(Include = "UserID,FirstName,LastName,Email,PhoneNumber,UserName,UserPassword,UserType,Language")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.Message = "Your details have been updated";
+            }
+            return View(user);
         }
     }
 }

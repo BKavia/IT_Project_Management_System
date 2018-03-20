@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<IT_Project_Management_System.Models.Task>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tasks";
     Layout = "~/Views/Template/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Tasks</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,16 +13,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Project.ProjectKey)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.FullName)
+            @Html.DisplayNameFor(model => model.TaskKey)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaskName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TaskDescription)
+            @Html.DisplayNameFor(model => model.User)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaskStartDate)
@@ -38,34 +35,31 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Project.ProjectKey)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskStartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskEndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskStatus)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TaskID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TaskID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TaskID })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TaskID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TaskID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TaskID })
+        </td>
+    </tr>
     }
 
 </table>

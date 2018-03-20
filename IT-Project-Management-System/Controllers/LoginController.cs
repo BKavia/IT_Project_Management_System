@@ -1,23 +1,28 @@
-﻿using IT_Project_Management_System.Models;
+﻿using IT_Project_Management_System.Helpers;
+using IT_Project_Management_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace IT_Project_Management_System.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         private SystemContext db = new SystemContext();
         // GET: Login
+       
         public ActionResult Index()
         {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
             return View();
         }
-
+               
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "UserName,UserPassword")] User user)
         {
             User foundUser = db.Users.SingleOrDefault((u => u.UserName.Equals(user.UserName) && u.UserPassword.Equals(user.UserPassword)));
@@ -28,6 +33,10 @@ namespace IT_Project_Management_System.Controllers
             }
             else
             {
+                SetCulture(foundUser.Language.ToString());
+                Session.Add("loggedUser", foundUser);
+                FormsAuthentication.SetAuthCookie(user.UserName, false);
+                
                 if (foundUser.UserType == UserType.Administrator || foundUser.UserType == UserType.ProjectManager)
                 {
                     return RedirectToAction("Index", "Projects");
@@ -38,8 +47,26 @@ namespace IT_Project_Management_System.Controllers
                 }
 
             }
-           
+            
             return View(user);
+        }
+
+        public void SetCulture(string culture)
+        {
+            // Validate input
+            culture = CultureHelper.GetImplementedCulture(culture);
+            // Save culture in a cookie
+            HttpCookie cookie = Request.Cookies["_culture"];
+            if (cookie != null)
+                cookie.Value = culture;   // update cookie value
+            else
+            {
+                cookie = new HttpCookie("_culture");
+                cookie.Value = culture;
+                cookie.Expires = DateTime.Now.AddYears(1);
+            }
+            Response.Cookies.Add(cookie);
+            //return RedirectToAction("Index");
         }
 
     }

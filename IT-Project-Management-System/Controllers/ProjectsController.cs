@@ -10,15 +10,25 @@ using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
-    public class ProjectsController : Controller
+    [Authorize]
+    public class ProjectsController : BaseController
     {
         private SystemContext db = new SystemContext();
 
         // GET: Projects
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var projects = db.Projects.Include(p => p.User);
-            return View(projects.ToList());
+            ViewBag.ShowSearchBox = true;
+            var projects = db.Projects.Include(p => p.User); ;
+            if (searchString != null)
+            {
+                 projects = projects.Where(s => s.ProjectName.Contains(searchString) ||
+                 s.ProjectDescription.Contains(searchString) ||
+                 s.ProjectKey.Contains(searchString)
+                 ).Include(p => p.User);
+            }
+            
+             return View(projects.ToList());
         }
 
         // GET: Projects/Details/5

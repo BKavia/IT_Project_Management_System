@@ -11,52 +11,66 @@ namespace IT_Project_Management_System.Models
     {
         public virtual int TaskID { get; set; }
 
-        [Required(ErrorMessage = "Project is required")]
-         public  int ProjectID { get; set; }
-        [Display(Name = "Project")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "TaskProjectRequired")]
+        public  int ProjectID { get; set; }
+        [Display(Name = "TaskProject", ResourceType = typeof(Resources.Resource))]
         public virtual Project Project { get; set; }
-       
 
-        [Required(ErrorMessage = "Task Name is required")]
-        [Display(Name = "Task Name")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "TaskNameRequired")]
+        [Display(Name = "TaskName", ResourceType = typeof(Resources.Resource))]
         [MaxLength(100)]
         public virtual string TaskName { get; set; }
 
-        [Display(Name = "Task Description")]
+
+        [Display(Name = "TaskDescription", ResourceType = typeof(Resources.Resource))]
         [MaxLength(200)]
         public virtual string TaskDescription { get; set; }
-            
-        [Display(Name = "Start Date")]
+
+        [Display(Name = "TaskStartDate", ResourceType = typeof(Resources.Resource))]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime? TaskStartDate { get; set; }
-               
-        [Display(Name = "End Date")]
+
+        [Display(Name = "TaskEndDate", ResourceType = typeof(Resources.Resource))]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime? TaskEndDate { get; set; }
 
-        [Required(ErrorMessage = "Task Status is required")]
-        [Display(Name = "Task Status")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "TaskStatusRequired")]
+        [Display(Name = "TaskStatus", ResourceType = typeof(Resources.Resource))]
         public virtual TaskStatus TaskStatus { get; set; }
-
-        [Display(Name = "User")]
+        
         public int? UserID { get; set; }
+
+        [Display(Name = "TaskAssignedTo", ResourceType = typeof(Resources.Resource))]
         public virtual User User { get; set; }
 
+        [Display(Name = "TaskKey", ResourceType = typeof(Resources.Resource))]
+        public string TaskKey
+        {
+            get
+            {
+                return this.Project.ProjectKey + "-" + this.TaskID;
+            }
+        }
 
-       
+        [Display(Name = "TaskComments", ResourceType = typeof(Resources.Resource))]
+        public virtual ICollection<Comment> Comments { get; set; }
+
+        [Display(Name = "TaskAttachments", ResourceType = typeof(Resources.Resource))]
+        public virtual ICollection<Document> Documents { get; set; }
+
     }
 
     public enum TaskStatus
     {
-        [Display(Name = "Not Started")]
-        NotStarted,
+        [Display(Name = "NotStarted", ResourceType = typeof(Resources.Resource))]
+         NotStarted,
 
-        [Display(Name = "In Progress")]
+        [Display(Name = "InProgress", ResourceType = typeof(Resources.Resource))]
         InProgress,
 
-        [Display(Name = "Completed")]
-        Completed
+        [Display(Name = "Completed", ResourceType = typeof(Resources.Resource))]
+         Completed
     }
 }

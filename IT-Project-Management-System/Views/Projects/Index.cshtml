@@ -1,20 +1,17 @@
 ﻿@model IEnumerable<IT_Project_Management_System.Models.Project>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
     Layout = "~/Views/Template/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Projects</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.User.FullName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.ProjectKey)
         </th>
@@ -23,6 +20,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProjectDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProjectStartDate)
@@ -39,9 +39,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.User.FullName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ProjectKey)
         </td>
         <td>
@@ -49,6 +46,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProjectDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProjectStartDate)
@@ -60,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.ProjectStatus)
         </td>
         <td>
-            
+
             @Html.ActionLink("View Tasks", "ViewProjectTasks", "Tasks", new { projectId = item.ProjectID }, null) |
             @Html.ActionLink("Edit", "Edit", new { id = item.ProjectID }) |
             @Html.ActionLink("Details", "Details", new { id = item.ProjectID }) |

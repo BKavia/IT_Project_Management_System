@@ -5,71 +5,59 @@
     Layout = "~/Views/Template/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.Project.ProjectName) / @Html.DisplayFor(model => model.TaskKey)</h2>
 
 <div>
-    <h4>Task</h4>
+    @Html.DisplayFor(model => model.TaskName)
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.ProjectKey)
-        </dt>
+    Details
+    <hr />
+    <div class="bs-docs-section">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="bs-component">
 
-        <dd>
-            @Html.DisplayFor(model => model.Project.ProjectKey)
-        </dd>
+                    <p class="lead">@Html.DisplayFor(model => model.TaskDescription)</p>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User.FirstName)
-        </dt>
+            <div class="col-lg-4">
+                <div class="bs-component">
+                    <p>@Html.DisplayNameFor(model => model.TaskStartDate) @Html.DisplayFor(model => model.TaskStartDate)</p>
+                    <p>@Html.DisplayNameFor(model => model.TaskEndDate) @Html.DisplayFor(model => model.TaskEndDate)</p>
+                    <p>@Html.DisplayNameFor(model => model.User) @Html.DisplayFor(model => model.User.FullName)</p>
+                    <p>@Html.DisplayNameFor(model => model.TaskStatus) @Html.DisplayFor(model => model.TaskStatus)</p>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.FirstName)
-        </dd>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TaskName)
-        </dt>
+    Comments
+    <hr />
+    <div class="bs-docs-section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    @foreach (var item in Model.Comments)
+                    {
+                        <p class="lead">@Html.DisplayFor(modelItem => item.User.FullName)  @Html.DisplayFor(modelItem => item.CommentDate)</p>
+                        <p class="lead">@Html.DisplayFor(modelItem => item.CommentText)</p>
+                    }
 
-        <dd>
-            @Html.DisplayFor(model => model.TaskName)
-        </dd>
+                </div>
+            </div>
+        </div>
+    </div>
+    Attachments
+    <hr />
+    @foreach (var item in Model.Documents)
+    {
+        <p class="lead">@Html.LabelFor(modelItem => item.File)  </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TaskDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TaskDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TaskStartDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TaskStartDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TaskEndDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TaskEndDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TaskStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TaskStatus)
-        </dd>
-
-    </dl>
+    }
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.TaskID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TaskID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

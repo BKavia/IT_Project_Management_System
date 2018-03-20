@@ -1,24 +1,67 @@
 ﻿<!DOCTYPE html>
+@using IT_Project_Management_System.Models;
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="@Url.Content("~/CSS/main.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.css")" />
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
     <header>
-        IT Project Management System
-        <nav>
-            <a href="/projects/">Projects</a> |
-            <a href="/users/">Users</a> |
+        <h2>IT Project Management System</h2>
+        @{ User loggedUser = (User)HttpContext.Current.Session["loggedUser"]; }
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <ul class="navbar-nav mr-auto">
+                @if (loggedUser.UserType != UserType.NormalUser){
+                <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/">Users</a>
+                </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" href="/tasks/">Tasks</a>
+                </li>
+            </ul>
+            @if (ViewBag.ShowSearchBox == true)
+        {
+            using (@Html.BeginForm())
+            {
+                <span class="form-inline my-2 my-lg-0">
+                    @Html.TextBox("SearchString", null, new { @class = "form-control mr-sm-2", @placeholder = "Search" })
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </span>
+
+        }
+    }
+            <ul class="nav nav-pills">
+                <li class="nav-item dropdown show">
+
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('dropdown-menu').classList.toggle('show')">@loggedUser.FullName</a>
+                    <div id="dropdown-menu" class="dropdown-menu">
+                        @(Html.ActionLink("Profile", "EditProfile", "Users", null, new { @class = "dropdown-item" }))
+                        @(Html.ActionLink("Log Out", "Index", "Login", null, new { @class = "dropdown-item" }))
+
+                    </div>
+                </li>
+            </ul>
+
+
+
+
         </nav>
     </header>
-    <div>
+    <div class="container">
         @RenderBody()
     </div>
-    <footer>
+    <footer id="footer">
         &copy; All rights reserved 2018
     </footer>
 </body>
+
 </html>

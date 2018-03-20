@@ -10,20 +10,29 @@ using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
-    public class TasksController : Controller
+    [Authorize]
+    public class TasksController : BaseController
     {
         private SystemContext db = new SystemContext();
 
         public ActionResult ViewProjectTasks(int projectId)
         {
+            ViewBag.ShowSearchBox = true;
             var tasks = db.Tasks.Where(t => t.ProjectID == projectId).Include(t => t.Project).Include(t => t.User);
             return View("Index",tasks.ToList());
         }
 
         // GET: Tasks
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            ViewBag.ShowSearchBox = true;
             var tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
+            if (searchString != null)
+            {
+                tasks = tasks.Where(s => s.TaskName.Contains(searchString) ||
+                 s.TaskDescription.Contains(searchString)
+                 ).Include(p => p.User);
+            }
             return View(tasks.ToList());
         }
 

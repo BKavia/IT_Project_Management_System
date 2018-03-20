@@ -12,54 +12,58 @@ namespace IT_Project_Management_System.Models
     {
         public virtual int ProjectID { get; set; }
 
-        [Required(ErrorMessage = "Project Manager is required")]
+        
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectPMRequired")]
         [ForeignKey("User")]
         public int? UserID { get; set; }
-        [Display(Name = "Project Manager")]
+        [Display(Name = "ProjectPM", ResourceType = typeof(Resources.Resource))]
         public virtual User User { get; set; }
 
-        [Required(ErrorMessage = "Key is required")]
-        [Display(Name = "Key")]
+
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectKeyRequired")]
+        [Display(Name = "ProjectKey", ResourceType = typeof(Resources.Resource))]
         [StringLength(3)]
         public virtual string ProjectKey { get; set; }
 
-        [Required(ErrorMessage = "Name is required")]
-        [Display(Name = "Name")]
+      
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectNameRequired")]
+        [Display(Name = "ProjectName", ResourceType = typeof(Resources.Resource))]
         [StringLength(100)]
         public virtual string ProjectName { get; set; }
 
-        [Required(ErrorMessage = "Description is required")]
-        [Display(Name = "Description")]
+
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectDescriptionRequired")]
+        [Display(Name = "ProjectDescription", ResourceType = typeof(Resources.Resource))]
         [StringLength(200)]
         public virtual string ProjectDescription { get; set; }
 
-        [Required(ErrorMessage = "Start Date is required")]
-        [Display(Name = "Start Date")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectStartDateRequired")]
+        [Display(Name = "ProjectStartDate", ResourceType = typeof(Resources.Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public virtual DateTime ProjectStartDate { get; set; }
-        
 
-        [Display(Name = "End Date")]
+
+        [Display(Name = "ProjectEndDate", ResourceType = typeof(Resources.Resource))]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime? ProjectEndDate { get; set; }
 
-        [Required(ErrorMessage = "Project Status is required")]
-        [Display(Name = "Project Status")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectStatusRequired")]
+        [Display(Name = "ProjectStatus", ResourceType = typeof(Resources.Resource))]
         public virtual ProjectStatus ProjectStatus { get; set; }
 
     }
 
     public enum ProjectStatus
     {
-        [Display(Name = "Not Started")]
+        [Display(Name = "NotStarted", ResourceType = typeof(Resources.Resource))]
         NotStarted,
 
-        [Display(Name = "In Progress")]
+        [Display(Name = "InProgress", ResourceType = typeof(Resources.Resource))]
         InProgress,
 
-        [Display(Name = "Completed")]
+        [Display(Name = "Completed", ResourceType = typeof(Resources.Resource))]
         Completed
     }
 }
