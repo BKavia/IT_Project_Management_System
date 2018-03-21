@@ -1,5 +1,6 @@
 ﻿@model IT_Project_Management_System.Models.Task
 
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Template/_Layout.cshtml";
@@ -23,10 +24,10 @@
 
             <div class="col-lg-4">
                 <div class="bs-component">
-                    <p>@Html.DisplayNameFor(model => model.TaskStartDate) @Html.DisplayFor(model => model.TaskStartDate)</p>
-                    <p>@Html.DisplayNameFor(model => model.TaskEndDate) @Html.DisplayFor(model => model.TaskEndDate)</p>
-                    <p>@Html.DisplayNameFor(model => model.User) @Html.DisplayFor(model => model.User.FullName)</p>
-                    <p>@Html.DisplayNameFor(model => model.TaskStatus) @Html.DisplayFor(model => model.TaskStatus)</p>
+                    <p>@Html.DisplayNameFor(model => model.TaskStartDate): @Html.DisplayFor(model => model.TaskStartDate)</p>
+                    <p>@Html.DisplayNameFor(model => model.TaskEndDate): @Html.DisplayFor(model => model.TaskEndDate)</p>
+                    <p>@Html.DisplayNameFor(model => model.User): @Html.DisplayFor(model => model.User.FullName)</p>
+                    <p>@Html.DisplayNameFor(model => model.TaskStatus): @Html.DisplayFor(model => model.TaskStatus)</p>
                 </div>
 
             </div>
@@ -35,22 +36,29 @@
 
     Comments
     <hr />
+    @{
+        IT_Project_Management_System.Models.Comment comment = new IT_Project_Management_System.Models.Comment();
+        comment.TaskID = Model.TaskID;
+    }
+    @Html.Partial("~/Views/Comments/_PartialComment.cshtml", comment)
     <div class="bs-docs-section">
         <div class="row">
             <div class="col-lg-12">
                 <div class="bs-component">
                     @foreach (var item in Model.Comments)
                     {
-                        <p class="lead">@Html.DisplayFor(modelItem => item.User.FullName)  @Html.DisplayFor(modelItem => item.CommentDate)</p>
-                        <p class="lead">@Html.DisplayFor(modelItem => item.CommentText)</p>
+                        <p>@Html.DisplayFor(modelItem => item.User.FullName)  @Html.DisplayFor(modelItem => item.CommentDate)</p>
+                        <p>@Html.DisplayFor(modelItem => item.CommentText)</p>
+                        @Html.ActionLink(Resources.Resource.Delete, "Delete", "Comments", new { id = item.CommentID, taskID = Model.TaskID }, null);
                     }
-
                 </div>
             </div>
         </div>
+
     </div>
     Attachments
     <hr />
+
     @foreach (var item in Model.Documents)
     {
         <p class="lead">@Html.LabelFor(modelItem => item.File)  </p>

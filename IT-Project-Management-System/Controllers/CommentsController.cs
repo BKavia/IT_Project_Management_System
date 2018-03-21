@@ -49,18 +49,19 @@ namespace IT_Project_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentID,TaskID,UserID,CommentText,CommentDate")] Comment comment)
+        public ActionResult Create([Bind(Include = "TaskID,CommentText")] Comment comment)
         {
             if (ModelState.IsValid)
             {
+                User loggedUser = (User)Session["loggedUser"];
+                comment.CommentDate = DateTime.Now;
+                comment.UserID = loggedUser.UserID;
+
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                
             }
-
-            ViewBag.TaskID = new SelectList(db.Tasks, "TaskID", "TaskName", comment.TaskID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", comment.UserID);
-            return View(comment);
+            return RedirectToAction("Details", "Tasks", new { id = comment.TaskID });
         }
 
         // GET: Comments/Edit/5
@@ -99,18 +100,19 @@ namespace IT_Project_Management_System.Controllers
         }
 
         // GET: Comments/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int taskID)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            if (comment != null)
             {
-                return HttpNotFound();
+                db.Comments.Remove(comment);
+                db.SaveChanges();
             }
-            return View(comment);
+            return RedirectToAction("Details", "Tasks", new { id = taskID });
         }
 
         // POST: Comments/Delete/5
