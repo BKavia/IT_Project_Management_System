@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(Resources.Resource.CreateNew, "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.TaskID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DocumentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DocumentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DocumentID })
+            @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id=item.DocumentID }) |
+            @Html.ActionLink(Resources.Resource.Details, "Details", new { id=item.DocumentID }) |
+            @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id=item.DocumentID })
         </td>
     </tr>
 }

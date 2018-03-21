@@ -120,11 +120,53 @@
   <data name="Administrator" xml:space="preserve">
     <value>Administrator</value>
   </data>
+  <data name="Allrightsreserved2018" xml:space="preserve">
+    <value>All rights reserved 2018</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to list</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="CommentBy" xml:space="preserve">
+    <value>Comment By</value>
+  </data>
+  <data name="CommentDate" xml:space="preserve">
+    <value>Comment Date</value>
+  </data>
+  <data name="CommentRequired" xml:space="preserve">
+    <value>Comment is required</value>
+  </data>
+  <data name="CommentTask" xml:space="preserve">
+    <value>Task</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Completed</value>
   </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="DocumentFile" xml:space="preserve">
+    <value>Document File</value>
+  </data>
+  <data name="DocumentTask" xml:space="preserve">
+    <value>Document Task</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="FileRequired" xml:space="preserve">
+    <value>File is required</value>
   </data>
   <data name="French" xml:space="preserve">
     <value>French</value>
@@ -132,11 +174,17 @@
   <data name="InProgress" xml:space="preserve">
     <value>In Progress</value>
   </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
   <data name="NormalUser" xml:space="preserve">
     <value>Normal User</value>
   </data>
   <data name="NotStarted" xml:space="preserve">
     <value>Not Started</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="ProjectDescription" xml:space="preserve">
     <value>Description</value>
@@ -168,6 +216,9 @@
   <data name="ProjectPMRequired" xml:space="preserve">
     <value>Project Manager is required</value>
   </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
   <data name="ProjectStartDate" xml:space="preserve">
     <value>Start Date</value>
   </data>
@@ -179,6 +230,12 @@
   </data>
   <data name="ProjectStatusRequired" xml:space="preserve">
     <value>Status is required</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="Spanish" xml:space="preserve">
     <value>Spanish</value>
@@ -212,6 +269,9 @@
   </data>
   <data name="TaskProjectRequired" xml:space="preserve">
     <value>Project is required</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tasks</value>
   </data>
   <data name="TaskStartDate" xml:space="preserve">
     <value>Start Date</value>
@@ -267,10 +327,16 @@
   <data name="UserPhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
   <data name="UserUserType" xml:space="preserve">
     <value>User Type</value>
   </data>
   <data name="UserUserTypeRequired" xml:space="preserve">
     <value>User Type is required</value>
+  </data>
+  <data name="ViewTasks" xml:space="preserve">
+    <value>View Tasks</value>
   </data>
 </root>

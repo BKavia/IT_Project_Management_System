@@ -154,6 +154,7 @@ namespace IT_Project_Management_System.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
+                SetCulture(user.Language.ToString());
                 db.SaveChanges();
                 ViewBag.Message = "Your details have been updated";
             }

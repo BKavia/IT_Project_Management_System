@@ -18,14 +18,14 @@
             <ul class="navbar-nav mr-auto">
                 @if (loggedUser.UserType != UserType.NormalUser){
                 <li class="nav-item">
-                    <a class="nav-link" href="/projects/">Projects</a>
+                    <a class="nav-link" href="/projects/">@Resources.Resource.Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users/">Users</a>
+                    <a class="nav-link" href="/users/">@Resources.Resource.Users</a>
                 </li>
                 }
                 <li class="nav-item">
-                    <a class="nav-link" href="/tasks/">Tasks</a>
+                    <a class="nav-link" href="/tasks/">@Resources.Resource.Tasks</a>
                 </li>
             </ul>
             @if (ViewBag.ShowSearchBox == true)
@@ -33,8 +33,8 @@
             using (@Html.BeginForm())
             {
                 <span class="form-inline my-2 my-lg-0">
-                    @Html.TextBox("SearchString", null, new { @class = "form-control mr-sm-2", @placeholder = "Search" })
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    @Html.TextBox("SearchString", null, new { @class = "form-control mr-sm-2", @placeholder = @Resources.Resource.Search })
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">@Resources.Resource.Search</button>
                 </span>
 
         }
@@ -44,8 +44,8 @@
 
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('dropdown-menu').classList.toggle('show')">@loggedUser.FullName</a>
                     <div id="dropdown-menu" class="dropdown-menu">
-                        @(Html.ActionLink("Profile", "EditProfile", "Users", null, new { @class = "dropdown-item" }))
-                        @(Html.ActionLink("Log Out", "Index", "Login", null, new { @class = "dropdown-item" }))
+                        @(Html.ActionLink(Resources.Resource.Profile, "EditProfile", "Users", null, new { @class = "dropdown-item" }))
+                        @(Html.ActionLink(Resources.Resource.LogOut, "Index", "Login", null, new { @class = "dropdown-item" }))
 
                     </div>
                 </li>
@@ -60,7 +60,7 @@
         @RenderBody()
     </div>
     <footer id="footer">
-        &copy; All rights reserved 2018
+        &copy; @Resources.Resource.Allrightsreserved2018
     </footer>
 </body>
 

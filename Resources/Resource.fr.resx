@@ -120,70 +120,223 @@
   <data name="Administrator" xml:space="preserve">
     <value>Administrateur</value>
   </data>
+  <data name="Allrightsreserved2018" xml:space="preserve">
+    <value>Tous droits réservés 2018</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Retour à la liste</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="CommentBy" xml:space="preserve">
+    <value>Commentaire par</value>
+  </data>
+  <data name="CommentDate" xml:space="preserve">
+    <value>Date du commentaire</value>
+  </data>
+  <data name="CommentRequired" xml:space="preserve">
+    <value>Un commentaire est requis</value>
+  </data>
+  <data name="CommentTask" xml:space="preserve">
+    <value>Tâche</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Créer un nouveau</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="DocumentFile" xml:space="preserve">
+    <value>Fichier de document</value>
+  </data>
+  <data name="DocumentTask" xml:space="preserve">
+    <value>Tâche de document</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>modifier</value>
+  </data>
   <data name="English" xml:space="preserve">
-    <value>Adresse e-mail</value>
-  </data>
-  <data name="French" xml:space="preserve">
-    <value>Adresse email invalide</value>
-  </data>
-  <data name="NormalUser" xml:space="preserve">
-    <value>Adresse e-mail est nécessaire</value>
-  </data>
-  <data name="ProjectManager" xml:space="preserve">
     <value>Anglais</value>
   </data>
-  <data name="Spanish" xml:space="preserve">
-    <value>Prénom</value>
+  <data name="FileRequired" xml:space="preserve">
+    <value>Le fichier est requis</value>
   </data>
-  <data name="UserEmailAddress" xml:space="preserve">
-    <value>Le prénom est requis</value>
-  </data>
-  <data name="UserEmailAddressInvalid" xml:space="preserve">
+  <data name="French" xml:space="preserve">
     <value>français</value>
   </data>
-  <data name="UserEmailAddressRequired" xml:space="preserve">
-    <value>La langue</value>
+  <data name="InProgress" xml:space="preserve">
+    <value>En cours</value>
   </data>
-  <data name="UserFirstName" xml:space="preserve">
-    <value>La langue est requise</value>
+  <data name="LogOut" xml:space="preserve">
+    <value>Connectez - Out</value>
   </data>
-  <data name="UserFirstNameRequired" xml:space="preserve">
-    <value>Nom de famille</value>
-  </data>
-  <data name="UserFullName" xml:space="preserve">
-    <value>Nom de famille est requis</value>
-  </data>
-  <data name="UserLanguage" xml:space="preserve">
-    <value>prénom</value>
-  </data>
-  <data name="UserLanguageRequired" xml:space="preserve">
+  <data name="NormalUser" xml:space="preserve">
     <value>Utilisateur normal</value>
   </data>
-  <data name="UserLastName" xml:space="preserve">
-    <value>Mot de passe</value>
+  <data name="NotStarted" xml:space="preserve">
+    <value>Pas commencé</value>
   </data>
-  <data name="UserLastNameRequired" xml:space="preserve">
-    <value>Mot de passe requis</value>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
   </data>
-  <data name="UserName" xml:space="preserve">
-    <value>Numéro de téléphone</value>
+  <data name="ProjectDescription" xml:space="preserve">
+    <value>La description</value>
   </data>
-  <data name="UserNameRequired" xml:space="preserve">
+  <data name="ProjectDescriptionRequired" xml:space="preserve">
+    <value>La description est requise</value>
+  </data>
+  <data name="ProjectEndDate" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="ProjectKey" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="ProjectKeyRequired" xml:space="preserve">
+    <value>La clé est requise</value>
+  </data>
+  <data name="ProjectManager" xml:space="preserve">
     <value>Chef de projet</value>
   </data>
-  <data name="UserPassword" xml:space="preserve">
+  <data name="ProjectName" xml:space="preserve">
+    <value>prénom</value>
+  </data>
+  <data name="ProjectNameRequired" xml:space="preserve">
+    <value>Le nom est requis</value>
+  </data>
+  <data name="ProjectPM" xml:space="preserve">
+    <value>Chef de projet</value>
+  </data>
+  <data name="ProjectPMRequired" xml:space="preserve">
+    <value>Chef de projet requis</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projets</value>
+  </data>
+  <data name="ProjectStartDate" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="ProjectStartDateRequired" xml:space="preserve">
+    <value>Date de début requise</value>
+  </data>
+  <data name="ProjectStatus" xml:space="preserve">
+    <value>L'état du projet</value>
+  </data>
+  <data name="ProjectStatusRequired" xml:space="preserve">
+    <value>Le statut est requis</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>sauvegarder</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Chercher</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
     <value>Espanol</value>
   </data>
-  <data name="UserPasswordRequired" xml:space="preserve">
-    <value>Type d'utilisateur</value>
+  <data name="TaskAssignedTo" xml:space="preserve">
+    <value>Assigné à</value>
   </data>
-  <data name="UserPhoneNumber" xml:space="preserve">
-    <value>Le type d'utilisateur est requis</value>
+  <data name="TaskAttachments" xml:space="preserve">
+    <value>Pièces jointes</value>
   </data>
-  <data name="UserUserType" xml:space="preserve">
+  <data name="TaskComments" xml:space="preserve">
+    <value>commentaires</value>
+  </data>
+  <data name="TaskDescription" xml:space="preserve">
+    <value>La description</value>
+  </data>
+  <data name="TaskEndDate" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="TaskKey" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="TaskName" xml:space="preserve">
+    <value>prénom</value>
+  </data>
+  <data name="TaskNameRequired" xml:space="preserve">
+    <value>Le nom est requis</value>
+  </data>
+  <data name="TaskProject" xml:space="preserve">
+    <value>Projet</value>
+  </data>
+  <data name="TaskProjectRequired" xml:space="preserve">
+    <value>Le projet est requis</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>les tâches</value>
+  </data>
+  <data name="TaskStartDate" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="TaskStatus" xml:space="preserve">
+    <value>Statut de la tâche</value>
+  </data>
+  <data name="TaskStatusRequired" xml:space="preserve">
+    <value>Le statut de la tâche est requis</value>
+  </data>
+  <data name="UserEmailAddress" xml:space="preserve">
+    <value>Adresse e-mail</value>
+  </data>
+  <data name="UserEmailAddressInvalid" xml:space="preserve">
+    <value>Adresse email invalide</value>
+  </data>
+  <data name="UserEmailAddressRequired" xml:space="preserve">
+    <value>Adresse e-mail est nécessaire</value>
+  </data>
+  <data name="UserFirstName" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="UserFirstNameRequired" xml:space="preserve">
+    <value>Le prénom est requis</value>
+  </data>
+  <data name="UserFullName" xml:space="preserve">
+    <value>prénom</value>
+  </data>
+  <data name="UserLanguage" xml:space="preserve">
+    <value>La langue</value>
+  </data>
+  <data name="UserLanguageRequired" xml:space="preserve">
+    <value>La langue est requise</value>
+  </data>
+  <data name="UserLastName" xml:space="preserve">
+    <value>Nom de famille</value>
+  </data>
+  <data name="UserLastNameRequired" xml:space="preserve">
+    <value>Nom de famille est requis</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
     <value>Nom d'utilisateur</value>
   </data>
-  <data name="UserUserTypeRequired" xml:space="preserve">
+  <data name="UserNameRequired" xml:space="preserve">
     <value>Nom d'utilisateur est nécessaire</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="UserPasswordRequired" xml:space="preserve">
+    <value>Mot de passe requis</value>
+  </data>
+  <data name="UserPhoneNumber" xml:space="preserve">
+    <value>Numéro de téléphone</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Utilisateurs</value>
+  </data>
+  <data name="UserUserType" xml:space="preserve">
+    <value>Type d'utilisateur</value>
+  </data>
+  <data name="UserUserTypeRequired" xml:space="preserve">
+    <value>Le type d'utilisateur est requis</value>
+  </data>
+  <data name="ViewTasks" xml:space="preserve">
+    <value>Afficher les tâches</value>
   </data>
 </root>

@@ -120,20 +120,143 @@
   <data name="Administrator" xml:space="preserve">
     <value>Administrador</value>
   </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comentario</value>
+  </data>
+  <data name="CommentBy" xml:space="preserve">
+    <value>Comentario por</value>
+  </data>
+  <data name="CommentDate" xml:space="preserve">
+    <value>Fecha de comentario</value>
+  </data>
+  <data name="CommentRequired" xml:space="preserve">
+    <value>Se requiere comentario</value>
+  </data>
+  <data name="CommentTask" xml:space="preserve">
+    <value>Tarea</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Terminado</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="DocumentFile" xml:space="preserve">
+    <value>Archivo de documento</value>
+  </data>
+  <data name="DocumentTask" xml:space="preserve">
+    <value>Tarea del documento</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>Inglés</value>
+  </data>
+  <data name="FileRequired" xml:space="preserve">
+    <value>El archivo es requerido</value>
   </data>
   <data name="French" xml:space="preserve">
     <value>francés</value>
   </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>En progreso</value>
+  </data>
   <data name="NormalUser" xml:space="preserve">
     <value>Usuario normal</value>
+  </data>
+  <data name="NotStarted" xml:space="preserve">
+    <value>No empezado</value>
+  </data>
+  <data name="ProjectDescription" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="ProjectDescriptionRequired" xml:space="preserve">
+    <value>Descripción es requerida</value>
+  </data>
+  <data name="ProjectEndDate" xml:space="preserve">
+    <value>Fecha final</value>
+  </data>
+  <data name="ProjectKey" xml:space="preserve">
+    <value>Llave</value>
+  </data>
+  <data name="ProjectKeyRequired" xml:space="preserve">
+    <value>La clave es obligatoria</value>
   </data>
   <data name="ProjectManager" xml:space="preserve">
     <value>Gerente de proyecto</value>
   </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ProjectNameRequired" xml:space="preserve">
+    <value>Se requiere el nombre</value>
+  </data>
+  <data name="ProjectPM" xml:space="preserve">
+    <value>Gerente de proyecto</value>
+  </data>
+  <data name="ProjectPMRequired" xml:space="preserve">
+    <value>El Gerente de Proyecto es requerido</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Proyectos</value>
+  </data>
+  <data name="ProjectStartDate" xml:space="preserve">
+    <value>Fecha de inicio</value>
+  </data>
+  <data name="ProjectStartDateRequired" xml:space="preserve">
+    <value>La fecha de inicio es obligatoria</value>
+  </data>
+  <data name="ProjectStatus" xml:space="preserve">
+    <value>Estado del proyecto</value>
+  </data>
+  <data name="ProjectStatusRequired" xml:space="preserve">
+    <value>El estado es requerido</value>
+  </data>
   <data name="Spanish" xml:space="preserve">
     <value>Español</value>
+  </data>
+  <data name="TaskAssignedTo" xml:space="preserve">
+    <value>Asignado a</value>
+  </data>
+  <data name="TaskAttachments" xml:space="preserve">
+    <value>Archivos adjuntos</value>
+  </data>
+  <data name="TaskComments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="TaskDescription" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="TaskEndDate" xml:space="preserve">
+    <value>Fecha final</value>
+  </data>
+  <data name="TaskKey" xml:space="preserve">
+    <value>Llave</value>
+  </data>
+  <data name="TaskName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="TaskNameRequired" xml:space="preserve">
+    <value>Se requiere el nombre</value>
+  </data>
+  <data name="TaskProject" xml:space="preserve">
+    <value>Proyecto</value>
+  </data>
+  <data name="TaskProjectRequired" xml:space="preserve">
+    <value>Proyecto es requerido</value>
+  </data>
+  <data name="TaskStartDate" xml:space="preserve">
+    <value>Fecha de inicio</value>
+  </data>
+  <data name="TaskStatus" xml:space="preserve">
+    <value>Estado de la tarea</value>
+  </data>
+  <data name="TaskStatusRequired" xml:space="preserve">
+    <value>El estado de la tarea es obligatorio</value>
   </data>
   <data name="UserEmailAddress" xml:space="preserve">
     <value>Dirección de correo electrónico</value>
@@ -185,5 +308,35 @@
   </data>
   <data name="UserUserTypeRequired" xml:space="preserve">
     <value>El tipo de usuario es obligatorio</value>
+  </data>
+  <data name="ViewTasks" xml:space="preserve">
+    <value>Ver tareas</value>
+  </data>
+  <data name="Allrightsreserved2018" xml:space="preserve">
+    <value>Todos los derechos reservados 2018</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Volver a la lista</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Crear nuevo</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tareas</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuarios</value>
   </data>
 </root>
