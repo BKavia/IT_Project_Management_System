@@ -339,4 +339,22 @@
   <data name="ViewTasks" xml:space="preserve">
     <value>View Tasks</value>
   </data>
+  <data name="DeleteProjects" xml:space="preserve">
+    <value>Delete Projects</value>
+  </data>
+  <data name="DeleteTasks" xml:space="preserve">
+    <value>Delete Tasks</value>
+  </data>
+  <data name="DeleteUsers" xml:space="preserve">
+    <value>Delete Users</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
+  <data name="EditTask" xml:space="preserve">
+    <value>Edit Task</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Edit User</value>
+  </data>
 </root>

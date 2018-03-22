@@ -339,4 +339,31 @@
   <data name="Users" xml:space="preserve">
     <value>Usuarios</value>
   </data>
+  <data name="DeleteProjects" xml:space="preserve">
+    <value>Eliminar proyectos</value>
+  </data>
+  <data name="DeleteTasks" xml:space="preserve">
+    <value>Eliminar tareas</value>
+  </data>
+  <data name="DeleteUsers" xml:space="preserve">
+    <value>Eliminar usuarios</value>
+  </data>
+  <data name="EditProjects" xml:space="preserve">
+    <value>Editar proyectos</value>
+  </data>
+  <data name="EditTasks" xml:space="preserve">
+    <value>Editar tareas</value>
+  </data>
+  <data name="EditUsers" xml:space="preserve">
+    <value>Editar usuarios</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Editar proyecto</value>
+  </data>
+  <data name="EditTask" xml:space="preserve">
+    <value>Editar tarea</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>editar usuario</value>
+  </data>
 </root>

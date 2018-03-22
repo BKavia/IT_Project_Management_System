@@ -160,6 +160,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Projects.
+        /// </summary>
+        public static string DeleteProjects {
+            get {
+                return ResourceManager.GetString("DeleteProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Tasks.
+        /// </summary>
+        public static string DeleteTasks {
+            get {
+                return ResourceManager.GetString("DeleteTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Users.
+        /// </summary>
+        public static string DeleteUsers {
+            get {
+                return ResourceManager.GetString("DeleteUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -192,6 +219,33 @@ namespace Resources {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Project.
+        /// </summary>
+        public static string EditProject {
+            get {
+                return ResourceManager.GetString("EditProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Task.
+        /// </summary>
+        public static string EditTask {
+            get {
+                return ResourceManager.GetString("EditTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit User.
+        /// </summary>
+        public static string EditUser {
+            get {
+                return ResourceManager.GetString("EditUser", resourceCulture);
             }
         }
         

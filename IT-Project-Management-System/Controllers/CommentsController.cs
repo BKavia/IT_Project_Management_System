@@ -48,20 +48,25 @@ namespace IT_Project_Management_System.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TaskID,CommentText")] Comment comment)
+        public PartialViewResult Create([Bind(Include = "TaskID,CommentText")] Comment comment)
         {
             if (ModelState.IsValid)
             {
                 User loggedUser = (User)Session["loggedUser"];
                 comment.CommentDate = DateTime.Now;
                 comment.UserID = loggedUser.UserID;
-
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                
             }
-            return RedirectToAction("Details", "Tasks", new { id = comment.TaskID });
+            Task task = db.Tasks.Find(comment.TaskID);
+            return PartialView("~/Views/Tasks/_PartialCommentList.cshtml", task);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult getPartial(Comment comment)
+        {
+            return PartialView("~/Views/Tasks/_PartialComment.cshtml", comment);
         }
 
         // GET: Comments/Edit/5

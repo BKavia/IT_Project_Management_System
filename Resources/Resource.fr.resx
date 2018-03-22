@@ -339,4 +339,22 @@
   <data name="ViewTasks" xml:space="preserve">
     <value>Afficher les tâches</value>
   </data>
+  <data name="DeleteProjects" xml:space="preserve">
+    <value>Supprimer des projets</value>
+  </data>
+  <data name="DeleteTasks" xml:space="preserve">
+    <value>Supprimer des tâches</value>
+  </data>
+  <data name="DeleteUsers" xml:space="preserve">
+    <value>Supprimer les utilisateurs</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Modifier le projet</value>
+  </data>
+  <data name="EditTask" xml:space="preserve">
+    <value>Modifier la tâche</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Modifier l'utilisateur</value>
+  </data>
 </root>
