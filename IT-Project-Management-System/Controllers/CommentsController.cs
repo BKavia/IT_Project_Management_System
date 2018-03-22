@@ -48,17 +48,22 @@ namespace IT_Project_Management_System.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public PartialViewResult Create([Bind(Include = "TaskID,CommentText")] Comment comment)
+        public PartialViewResult Create([Bind(Include = "TaskID,UserID,CommentText")] Comment comment)
         {
             if (ModelState.IsValid)
             {
                 User loggedUser = (User)Session["loggedUser"];
                 comment.CommentDate = DateTime.Now;
                 comment.UserID = loggedUser.UserID;
+                comment.User = db.Users.Find(loggedUser.UserID);
                 db.Comments.Add(comment);
                 db.SaveChanges();
+                
             }
+            var projects = db.Projects.Include(p => p.User);
+
             Task task = db.Tasks.Find(comment.TaskID);
+        
             return PartialView("~/Views/Tasks/_PartialCommentList.cshtml", task);
         }
 

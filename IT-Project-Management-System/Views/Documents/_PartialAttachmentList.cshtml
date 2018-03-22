@@ -1,0 +1,29 @@
+﻿@model IT_Project_Management_System.Models.Task
+ 
+@{
+    IT_Project_Management_System.Models.Document document = new IT_Project_Management_System.Models.Document();
+    document.TaskID = Model.TaskID;
+
+}
+
+<div class="bs-docs-section">
+    @foreach (var item in Model.Documents)
+    {
+
+        <div class="row">
+            <div class="col-lg-11">
+                <div class="bs-component">
+                    <p>@Html.DisplayFor(modelItem => item.File)</p>
+                    
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="bs-component">
+                    @Html.ActionLink(Resources.Resource.Delete, "Delete", "Comments", new { id = item.DocumentID, taskID = Model.TaskID }, null)
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@{Html.RenderPartial("~/Views/Documents/_PartialAttachmentAdd.cshtml", document);}
+

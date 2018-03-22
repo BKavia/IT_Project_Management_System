@@ -1,22 +1,29 @@
 ﻿@model IT_Project_Management_System.Models.Task
+ 
+@{
+     IT_Project_Management_System.Models.Comment comment = new IT_Project_Management_System.Models.Comment();
+    comment.CommentText = "";
+    comment.TaskID = Model.TaskID;
+
+}
 
 <div class="bs-docs-section">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="bs-component">
-                @foreach (var item in Model.Comments)
-                {
+    @foreach (var item in Model.Comments)
+    {
+
+        <div class="row">
+            <div class="col-lg-11">
+                <div class="bs-component">
                     <p>@Html.DisplayFor(modelItem => item.User.FullName)  @Html.DisplayFor(modelItem => item.CommentDate)</p>
                     <p>@Html.DisplayFor(modelItem => item.CommentText)</p>
-                    @Html.ActionLink(Resources.Resource.Delete, "Delete", "Comments", new { id = item.CommentID, taskID = Model.TaskID }, null);
-                }
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="bs-component">
+                    @Html.ActionLink(Resources.Resource.Delete, "Delete", "Comments", new { id = item.CommentID, taskID = Model.TaskID }, null)
+                </div>
             </div>
         </div>
-    </div>
-
+    }
 </div>
-@{
-    IT_Project_Management_System.Models.Comment comment = new IT_Project_Management_System.Models.Comment();
-    comment.TaskID = Model.TaskID;
- }
-@{Html.RenderPartial("~/Views/Tasks/_PartialComment.cshtml", comment);}
+@{Html.RenderPartial("~/Views/Tasks/_PartialCommentAdd.cshtml", comment);}

@@ -19,7 +19,7 @@ namespace IT_Project_Management_System.Controllers
         public ActionResult Index(string searchString)
         {
             ViewBag.ShowSearchBox = true;
-            var projects = db.Projects.Include(p => p.User); ;
+            var projects = db.Projects.Include(p => p.User); 
             if (searchString != null)
             {
                  projects = projects.Where(s => s.ProjectName.Contains(searchString) ||

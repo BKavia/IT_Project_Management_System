@@ -205,7 +205,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Users\EditProfile.cshtml" />
-    <Content Include="Views\Documents\Create.cshtml" />
     <Content Include="Views\Documents\Delete.cshtml" />
     <Content Include="Views\Documents\Details.cshtml" />
     <Content Include="Views\Documents\Edit.cshtml" />
@@ -215,8 +214,10 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
-    <Content Include="Views\Tasks\_PartialComment.cshtml" />
+    <Content Include="Views\Tasks\_PartialCommentAdd.cshtml" />
     <Content Include="Views\Tasks\_PartialCommentList.cshtml" />
+    <Content Include="Views\Documents\_PartialAttachmentAdd.cshtml" />
+    <Content Include="Views\Documents\_PartialAttachmentList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
