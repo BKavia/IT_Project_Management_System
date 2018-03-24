@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Template/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create Project</h2>
@@ -49,7 +49,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ProjectStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ProjectStartDate, new { htmlAttributes = new { @class = "form-control date-picker" , @Value = System.DateTime.Now.ToString("MM/dd/yyyy")} })
+            @Html.TextBoxFor(model => model.ProjectStartDate, htmlAttributes: new { @class = "form-control datepicker", @Value = System.DateTime.Now.ToString("dd/MM/yyyy")  })
             @Html.ValidationMessageFor(model => model.ProjectStartDate, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -57,7 +57,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ProjectEndDate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ProjectEndDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.ProjectEndDate, htmlAttributes: new { @class = "form-control datepicker"})
             @Html.ValidationMessageFor(model => model.ProjectEndDate, "", new { @class = "text-danger" })
         </div>
     </div>

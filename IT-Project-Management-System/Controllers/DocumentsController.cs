@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -35,6 +36,41 @@ namespace IT_Project_Management_System.Controllers
             return View(document);
         }
 
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file, int TaskID)
+        {
+            
+            try
+            {
+      
+                if (file != null && file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
+                    file.SaveAs(_path);
+
+                    Document document = new Document();
+                    document.TaskID = TaskID;
+                    document.FileName = _FileName;
+                    db.Documents.Add(document);
+                    db.SaveChanges();
+                    ViewBag.Message = "File Uploaded Successfully!!";
+                }
+                else
+                {
+                    ViewBag.Message = "File upload failed!!";
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "File upload failed!!";
+               
+            }
+            
+            Task task = db.Tasks.Find(TaskID);
+            return PartialView("~/Views/Documents/_PartialAttachmentList.cshtml", task);
+        }
         // GET: Documents/Create
         public ActionResult Create()
         {
@@ -90,18 +126,21 @@ namespace IT_Project_Management_System.Controllers
         }
 
         // GET: Documents/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int taskID)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Document document = db.Documents.Find(id);
-            if (document == null)
+            if (document != null)
             {
-                return HttpNotFound();
+                db.Documents.Remove(document);
+                db.SaveChanges();
             }
-            return View(document);
+            Task task = db.Tasks.Find(taskID);
+            return PartialView("~/Views/Documents/_PartialAttachmentList.cshtml", task);
+        
         }
 
         // POST: Documents/Delete/5

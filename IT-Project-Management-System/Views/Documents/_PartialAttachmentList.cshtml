@@ -13,13 +13,26 @@
         <div class="row">
             <div class="col-lg-11">
                 <div class="bs-component">
-                    <p>@Html.DisplayFor(modelItem => item.File)</p>
-                    
+
+                 
+
+                    <a href="@Url.Content("~/UploadedFiles/" + item.FileName)" target="_blank">@Html.DisplayFor(modelItem => item.FileName)</a>
+
+
                 </div>
             </div>
             <div class="col-lg-1">
                 <div class="bs-component">
-                    @Html.ActionLink(Resources.Resource.Delete, "Delete", "Comments", new { id = item.DocumentID, taskID = Model.TaskID }, null)
+                    @Ajax.ActionLink(Resources.Resource.Delete, // <-- Text to display
+                     "Delete", "Documents",
+                     new { id = item.DocumentID, taskID = Model.TaskID },
+                     new AjaxOptions
+                     {
+                         UpdateTargetId = "AttachmentAddDiv",
+                         InsertionMode = InsertionMode.Replace, 
+                         HttpMethod = "GET" 
+
+                     },null)
                 </div>
             </div>
         </div>

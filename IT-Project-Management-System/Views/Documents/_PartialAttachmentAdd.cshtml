@@ -1,32 +1,57 @@
 ﻿@model IT_Project_Management_System.Models.Document
 
-@using (Ajax.BeginForm("Create", "Documents", new AjaxOptions
+
+
+@using (Ajax.BeginForm("UploadFile", "Documents", null, new AjaxOptions
 {
-    HttpMethod = "POST",
     InsertionMode = InsertionMode.Replace,
     AllowCache = false,
     UpdateTargetId = "AttachmentAddDiv"
-}))
+}, new { enctype = "multipart/form-data" }))
 {
-    <fieldset>
-        <div class="form-horizontal">
-            <div class="form-group">
-                @Html.HiddenFor(model => model.TaskID, Model.TaskID)
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.File, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
-                </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.HiddenFor(model => model.TaskID, Model.TaskID)
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.File, new { @class = "form-control", type = "file" })
+                @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })<br/>
+                @ViewBag.Message
             </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-
         </div>
-    </fieldset>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" id="fileUpload" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+
 
 }
 
+<script>
+    window.addEventListener("submit", function (e) {
+        var form = e.target;
+        if (form.getAttribute("enctype") === "multipart/form-data") {
+            if (form.dataset.ajax) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var xhr = new XMLHttpRequest();
+                xhr.open(form.method, form.action);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        if (form.dataset.ajaxUpdate) {
+                            var updateTarget = document.querySelector(form.dataset.ajaxUpdate);
+                            if (updateTarget) {
+                                updateTarget.innerHTML = xhr.responseText;
+                            }
+                        }
+                    }
+                };
+                xhr.send(new FormData(form));
+            }
+        }
+    }, true);
+    </script>
 

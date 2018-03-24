@@ -10,12 +10,18 @@ namespace IT_Project_Management_System.Models
     public class Document
     {
         public virtual int DocumentID { get; set; }
-        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "FileRequired")]
+
+     
         [Display(Name = "DocumentFile", ResourceType = typeof(Resources.Resource))]
         [NotMapped]
         public  HttpPostedFileBase File { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "FileNameRequired")]
+        public string FileName { get; set; }
+
+      
         public  int TaskID { get; set; }
+
         [Display(Name = "DocumentTask", ResourceType = typeof(Resources.Resource))]
         public virtual Task Task { get; set; }
     }

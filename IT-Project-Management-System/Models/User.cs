@@ -80,7 +80,7 @@ namespace IT_Project_Management_System.Models
         ProjectManager
     }
 
-    public enum Language
+    public enum Language 
     {
         [Display(Name = "English", ResourceType = typeof(Resources.Resource))]
         en,

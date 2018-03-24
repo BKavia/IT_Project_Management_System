@@ -67,13 +67,7 @@ namespace IT_Project_Management_System.Controllers
             return PartialView("~/Views/Tasks/_PartialCommentList.cshtml", task);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult getPartial(Comment comment)
-        {
-            return PartialView("~/Views/Tasks/_PartialComment.cshtml", comment);
-        }
-
+       
         // GET: Comments/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -17,14 +17,28 @@ namespace IT_Project_Management_System.Controllers
        
         public ActionResult Index()
         {
-            FormsAuthentication.SignOut();
-            Session.Abandon();
+            if (User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.SignOut();
+                Session.Abandon();
+            }
             return View();
         }
-               
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public ActionResult Index([Bind(Include = "UserName,UserPassword")] User user)
         {
+
             User foundUser = db.Users.SingleOrDefault((u => u.UserName.Equals(user.UserName) && u.UserPassword.Equals(user.UserPassword)));
             
             if (foundUser == null)
@@ -36,7 +50,12 @@ namespace IT_Project_Management_System.Controllers
                 SetCulture(foundUser.Language.ToString());
                 Session.Add("loggedUser", foundUser);
                 FormsAuthentication.SetAuthCookie(user.UserName, false);
-                
+           
+                // var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddMinutes(20), false, foundUser.UserType.ToString());
+                //string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                //var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                //HttpContext.Response.Cookies.Add(authCookie);
+
                 if (foundUser.UserType == UserType.Administrator || foundUser.UserType == UserType.ProjectManager)
                 {
                     return RedirectToAction("Index", "Projects");

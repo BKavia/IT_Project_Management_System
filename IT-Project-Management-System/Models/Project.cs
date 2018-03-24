@@ -39,14 +39,12 @@ namespace IT_Project_Management_System.Models
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectStartDateRequired")]
         [Display(Name = "ProjectStartDate", ResourceType = typeof(Resources.Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public virtual DateTime ProjectStartDate { get; set; }
 
 
         [Display(Name = "ProjectEndDate", ResourceType = typeof(Resources.Resource))]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime? ProjectEndDate { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectStatusRequired")]

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
+
 namespace IT_Project_Management_System.Models
 {
     public class Task
@@ -12,7 +13,7 @@ namespace IT_Project_Management_System.Models
         public virtual int TaskID { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "TaskProjectRequired")]
-        public  int ProjectID { get; set; }
+        public int ProjectID { get; set; }
         [Display(Name = "TaskProject", ResourceType = typeof(Resources.Resource))]
         public virtual Project Project { get; set; }
 
@@ -28,12 +29,10 @@ namespace IT_Project_Management_System.Models
 
         [Display(Name = "TaskStartDate", ResourceType = typeof(Resources.Resource))]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime? TaskStartDate { get; set; }
 
         [Display(Name = "TaskEndDate", ResourceType = typeof(Resources.Resource))]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime? TaskEndDate { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "TaskStatusRequired")]
@@ -73,4 +72,5 @@ namespace IT_Project_Management_System.Models
         [Display(Name = "Completed", ResourceType = typeof(Resources.Resource))]
          Completed
     }
+    
 }
