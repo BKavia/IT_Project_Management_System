@@ -319,7 +319,8 @@
     <Content Include="Views\Documents\_PartialAttachmentList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
-    <Content Include="Views\Login\LogOff.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Projects\ProjectSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

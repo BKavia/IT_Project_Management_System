@@ -62,6 +62,7 @@
         <td>
 
             @Html.ActionLink(Resources.Resource.ViewTasks, "ViewProjectTasks", "Tasks", new { projectId = item.ProjectID }, null) |
+            @Html.ActionLink(Resources.Resource.ProjectSummary, "ProjectSummary", "Projects", new { projectId = item.ProjectID }, null) |
             @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.ProjectID }) |
             @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.ProjectID }) |
             @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.ProjectID })

@@ -357,4 +357,7 @@
   <data name="EditUser" xml:space="preserve">
     <value>Edit User</value>
   </data>
+  <data name="ProjectSummary" xml:space="preserve">
+    <value>Project Summary</value>
+  </data>
 </root>

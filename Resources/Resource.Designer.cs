@@ -457,6 +457,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Summary.
+        /// </summary>
+        public static string ProjectSummary {
+            get {
+                return ResourceManager.GetString("ProjectSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {

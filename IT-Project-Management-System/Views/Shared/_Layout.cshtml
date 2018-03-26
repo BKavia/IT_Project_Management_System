@@ -53,7 +53,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('dropdown-menu').classList.toggle('show')">@loggedUser.FullName</a>
                     <div id="dropdown-menu" class="dropdown-menu">
                         @(Html.ActionLink(Resources.Resource.Profile, "EditProfile", "Users", null, new { @class = "dropdown-item" }))
-                        @(Html.ActionLink(Resources.Resource.LogOut, "LogOff", "Login", null, new { @class = "dropdown-item" }))
+                        @(Html.ActionLink(Resources.Resource.LogOut, "Index", "Login", null, new { @class = "dropdown-item" }))
 
                     </div>
                 </li>
