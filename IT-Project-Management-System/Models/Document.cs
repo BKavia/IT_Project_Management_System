@@ -24,5 +24,7 @@ namespace IT_Project_Management_System.Models
 
         [Display(Name = "DocumentTask", ResourceType = typeof(Resources.Resource))]
         public virtual Task Task { get; set; }
+             
+        public DateTime UploadDate { get; set; }
     }
 }

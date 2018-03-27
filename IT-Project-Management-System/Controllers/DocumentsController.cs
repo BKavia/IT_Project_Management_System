@@ -39,7 +39,6 @@ namespace IT_Project_Management_System.Controllers
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file, int TaskID)
         {
-            
             try
             {
       
@@ -52,9 +51,11 @@ namespace IT_Project_Management_System.Controllers
                     Document document = new Document();
                     document.TaskID = TaskID;
                     document.FileName = _FileName;
+                    document.UploadDate = DateTime.Now;
                     db.Documents.Add(document);
                     db.SaveChanges();
                     ViewBag.Message = "File Uploaded Successfully!!";
+
                 }
                 else
                 {

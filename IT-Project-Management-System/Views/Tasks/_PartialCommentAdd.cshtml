@@ -13,7 +13,8 @@
         <div class="form-group">
             @Html.HiddenFor(model => model.TaskID, Model.TaskID)
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CommentText, new { htmlAttributes = new { @class = "form-control", row=5} })
+               
+                @Html.TextAreaFor(model => model.CommentText, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CommentText, "", new { @class = "text-danger" })
             </div>
         </div>

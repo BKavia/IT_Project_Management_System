@@ -10,7 +10,6 @@ using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
-    
     public class UsersController : BaseController
     {
         private SystemContext db = new SystemContext();

@@ -255,14 +255,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
-    <Compile Include="Migrations\201803032142426_updateenummodel.cs" />
-    <Compile Include="Migrations\201803032142426_updateenummodel.Designer.cs">
-      <DependentUpon>201803032142426_updateenummodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803242129363_changedDocumentModel.cs" />
-    <Compile Include="Migrations\201803242129363_changedDocumentModel.Designer.cs">
-      <DependentUpon>201803242129363_changedDocumentModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\User.cs" />
@@ -339,14 +331,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803032142426_updateenummodel.resx">
-      <DependentUpon>201803032142426_updateenummodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803242129363_changedDocumentModel.resx">
-      <DependentUpon>201803242129363_changedDocumentModel.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Resources\Resources.csproj">
