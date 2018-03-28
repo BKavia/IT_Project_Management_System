@@ -20,9 +20,9 @@ namespace IT_Project_Management_System.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 FormsAuthentication.SignOut();
-                Session.Abandon();
-                Session["loggedUser"] = null;
             }
+            Session.Clear();
+            Session.Abandon();
             return View();
         }
 
