@@ -6,11 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
-
+    [SessionTimeout]
     public class TasksController : BaseController
     {
         private SystemContext db = new SystemContext();
@@ -23,11 +24,22 @@ namespace IT_Project_Management_System.Controllers
         }
 
         // GET: Tasks
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, string taskstatusList)
         {
             ViewBag.ShowSearchBox = true;
-            var tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
-            IEnumerable<Task> ts = tasks.ToList();
+            IEnumerable<Task> ts = null;
+            if (taskstatusList != null) {
+                TaskStatus selectedStatus = (TaskStatus)Enum.Parse(typeof(TaskStatus), taskstatusList);
+                var tasks = db.Tasks.Where(t => t.TaskStatus == selectedStatus).Include(t => t.Project).Include(t => t.User);
+                ts = tasks.ToList();
+            }
+            else
+            {
+                var tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
+                ts = tasks.ToList();
+            }
+           
+            
 
             if (searchString != null)
             {
@@ -37,7 +49,17 @@ namespace IT_Project_Management_System.Controllers
                  s.TaskKey.ToUpper().Contains(searchStringUpper)
                  );
               }
-           
+
+          ViewBag.taskstatusList = new SelectList(Enum.GetValues(typeof(TaskStatus)).OfType<Enum>()
+         .Select(x =>
+             new SelectListItem
+             {
+                 Text = Enum.GetName(typeof(TaskStatus), x),
+                 Value = (Convert.ToInt32(x)).ToString()
+             }), "Value", "Text");
+        
+
+        
             return View(ts);
         }
 

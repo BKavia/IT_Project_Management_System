@@ -21,17 +21,20 @@ namespace IT_Project_Management_System.Controllers
             {
                 FormsAuthentication.SignOut();
                 Session.Abandon();
+                Session["loggedUser"] = null;
             }
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
-            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            FormsAuthentication.SignOut();
-            Session.Abandon();
+            if (User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.SignOut();
+                Session.Abandon();
+                Session["loggedUser"] = null;
+            }
             return RedirectToAction("Index");
         }
 

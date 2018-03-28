@@ -8,60 +8,72 @@
 }
 
 <h2>Tasks</h2>
+@using (Html.BeginForm())
+{ 
+<div class="bs-docs-section">
+    <div class="row">
+        <div class="col-lg-9"> </div>
+            <div class="col-lg-3">
+                <div class="form-inline my-3 my-lg-0">
+                        Filter by @Html.DropDownList("taskstatusList", null, htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                 </div>
+            </div>
+        </div>
+    </div>
+}
+        <p>
+            @Html.ActionLink(Resources.Resource.CreateNew, "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskKey)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskStartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskEndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskStatus)
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink(Resources.Resource.CreateNew, "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskKey)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskEndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskStatus)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskKey)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskEndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskStatus)
+                    </td>
+                    <td>
+                        @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.TaskID }) |
+                        @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.TaskID }) |
+                        @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.TaskID })
+                    </td>
+                </tr>
+            }
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskKey)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskStatus)
-        </td>
-        <td>
-            @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.TaskID }) |
-            @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.TaskID }) |
-            @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.TaskID })
-        </td>
-    </tr>
-    }
-
-</table>
+        </table>

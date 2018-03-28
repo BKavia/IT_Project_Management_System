@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
+    [SessionTimeout]
     public class ProjectsController : BaseController
     {
         private SystemContext db = new SystemContext();
