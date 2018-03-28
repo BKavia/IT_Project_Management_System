@@ -27,13 +27,18 @@ namespace IT_Project_Management_System.Controllers
         {
             ViewBag.ShowSearchBox = true;
             var tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
+            IEnumerable<Task> ts = tasks.ToList();
+
             if (searchString != null)
             {
-                tasks = tasks.Where(s => s.TaskName.Contains(searchString) ||
-                 s.TaskDescription.Contains(searchString)
-                 ).Include(p => p.User);
-            }
-            return View(tasks.ToList());
+                String searchStringUpper = searchString.ToUpper();
+                ts = ts.Where(s => s.TaskName.Contains(searchStringUpper) ||
+                 s.TaskDescription.ToUpper().Contains(searchStringUpper) ||
+                 s.TaskKey.ToUpper().Contains(searchStringUpper)
+                 );
+              }
+           
+            return View(ts);
         }
 
         // GET: Tasks/Details/5
@@ -54,7 +59,7 @@ namespace IT_Project_Management_System.Controllers
         // GET: Tasks/Create
         public ActionResult Create()
         {
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey");
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName");
             ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.NormalUser), "UserID", "FullName");
             return View();
         }
@@ -73,7 +78,7 @@ namespace IT_Project_Management_System.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey", task.ProjectID);
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", task.ProjectID);
             ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", task.UserID);
             return View(task);
         }
@@ -90,7 +95,7 @@ namespace IT_Project_Management_System.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey", task.ProjectID);
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", task.ProjectID);
             ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.NormalUser), "UserID", "FullName", task.UserID);
             return View(task);
         }
@@ -106,9 +111,15 @@ namespace IT_Project_Management_System.Controllers
             {
                 db.Entry(task).State = EntityState.Modified;
                 db.SaveChanges();
+                string fromDetails = Request.QueryString["from"];
+                if (fromDetails != null)
+                {
+                    return RedirectToAction("Details", new { id = task.TaskID });
+                }
                 return RedirectToAction("Index");
+                 
             }
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectKey", task.ProjectID);
+            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", task.ProjectID);
             ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", task.UserID);
             return View(task);
         }

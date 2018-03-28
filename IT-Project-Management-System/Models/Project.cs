@@ -22,7 +22,7 @@ namespace IT_Project_Management_System.Models
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectKeyRequired")]
         [Display(Name = "ProjectKey", ResourceType = typeof(Resources.Resource))]
-        [StringLength(3)]
+        [MaxLength(3)]
         public virtual string ProjectKey { get; set; }
 
       

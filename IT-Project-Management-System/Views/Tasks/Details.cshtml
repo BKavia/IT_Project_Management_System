@@ -11,13 +11,13 @@
 <div>
     @Html.DisplayFor(model => model.TaskName)
     <hr />
-    Details
+    <h4> Details </h4>
     <hr />
     <div class="bs-docs-section">
         <div class="row">
             <div class="col-lg-8">
                 <div class="bs-component">
-                    <p class="lead">@Html.DisplayFor(model => model.TaskDescription)</p>
+                    <p>@Html.DisplayFor(model => model.TaskDescription)</p>
                 </div>
             </div>
 
@@ -28,22 +28,20 @@
                     <p>@Html.DisplayNameFor(model => model.User): @Html.DisplayFor(model => model.User.FullName)</p>
                     <p>@Html.DisplayNameFor(model => model.TaskStatus): @Html.DisplayFor(model => model.TaskStatus)</p>
                 </div>
-
+                <div class="bs-component">
+                    @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = Model.TaskID, from = "Details" })
+                </div>
             </div>
         </div>
     </div>
-
-    Comments
+    
+    <h4> Comments </h4>
     <hr />
     <div id="CommentsAddDiv">
         @{Html.RenderPartial("~/Views/Tasks/_PartialCommentList.cshtml", Model);}
     </div>
 
-
-
-
-
-    Attachments
+    <h4> Attachments </h4>
     <hr />
     <div id="AttachmentAddDiv">
         @{Html.RenderPartial("~/Views/Documents/_PartialAttachmentList.cshtml", Model);}

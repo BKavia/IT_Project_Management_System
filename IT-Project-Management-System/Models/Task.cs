@@ -11,7 +11,7 @@ namespace IT_Project_Management_System.Models
     public class Task
     {
         public virtual int TaskID { get; set; }
-
+        
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "TaskProjectRequired")]
         public int ProjectID { get; set; }
         [Display(Name = "TaskProject", ResourceType = typeof(Resources.Resource))]

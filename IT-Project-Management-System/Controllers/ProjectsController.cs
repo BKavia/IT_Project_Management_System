@@ -101,6 +101,7 @@ namespace IT_Project_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
+                project.ProjectKey = project.ProjectKey.ToUpper();
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -135,6 +136,7 @@ namespace IT_Project_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
+                project.ProjectKey = project.ProjectKey.ToUpper();
                 db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
