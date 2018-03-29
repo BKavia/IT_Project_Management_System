@@ -1,5 +1,6 @@
-﻿@model IEnumerable<IT_Project_Management_System.Models.Task>
-
+﻿@using IT_Project_Management_System.Models;
+@model PagedList.IPagedList<IT_Project_Management_System.Models.Task>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Tasks";
@@ -8,73 +9,80 @@
 }
 
 <h2>Tasks</h2>
+
 @using (Html.BeginForm())
-{ 
-<div class="bs-docs-section">
-    <div class="row">
-        <div class="col-lg-9"> </div>
+{
+    <div class="bs-docs-section">
+        <div class="row">
+            <div class="col-lg-9"> </div>
             <div class="col-lg-3">
                 <div class="form-inline my-3 my-lg-0">
-               
-                    Filter by @Html.DropDownList("taskstatusList", null, htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                    Filter by  @Html.DropDownList("taskstatusList", null, htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+
                 </div>
             </div>
         </div>
     </div>
 }
-        <p>
-            @Html.ActionLink(Resources.Resource.CreateNew, "Create")
-        </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.TaskKey)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TaskName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TaskStartDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TaskEndDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TaskStatus)
-                </th>
-                <th></th>
-            </tr>
+<p>
+    @Html.ActionLink(Resources.Resource.CreateNew, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().TaskKey).ToHtmlString(), "Index", new { sortOrder = ViewBag.TaskKeySortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TaskName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TaskStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TaskEndDate)
+        </th>
+        <th>
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().TaskStatus).ToHtmlString(), "Index", new { sortOrder = ViewBag.TaskStatusSortParm })
+        </th>
+        <th></th>
+    </tr>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TaskKey)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TaskName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TaskStartDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TaskEndDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TaskStatus)
-                    </td>
-                    <td>
-                        @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.TaskID }) |
-                        @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.TaskID }) |
-                        @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.TaskID })
-                    </td>
-                </tr>
-            }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStatus)
+            </td>
+            <td>
+                @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.TaskID }) |
+                @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.TaskID })
 
-        </table>
+                @{ User loggedUser = (User)HttpContext.Current.Session["loggedUser"]; }
+                @if (loggedUser.UserType != UserType.NormalUser)
+                {
+                    @:| @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.TaskID })
+                }
+            </td>
+        </tr>
+    }
+ </table>
+<br />
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

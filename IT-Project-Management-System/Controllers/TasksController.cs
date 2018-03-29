@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
+using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
@@ -16,17 +17,14 @@ namespace IT_Project_Management_System.Controllers
     {
         private SystemContext db = new SystemContext();
 
-        public ActionResult ViewProjectTasks(int projectId)
+         // GET: Tasks
+        public ActionResult Index(int? projectId, string sortOrder, string searchString, string taskstatusList, string currentFilter, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.TaskKeySortParm = String.IsNullOrEmpty(sortOrder) ? "taskKey_desc" : "";
+            ViewBag.TaskStatusSortParm = sortOrder == "TaskStatus" ? "taskStatus_desc" : "TaskStatus";
             ViewBag.ShowSearchBox = true;
-            var tasks = db.Tasks.Where(t => t.ProjectID == projectId).Include(t => t.Project).Include(t => t.User);
-            return View("Index",tasks.ToList());
-        }
 
-        // GET: Tasks
-        public ActionResult Index(string searchString, string taskstatusList)
-        {
-            ViewBag.ShowSearchBox = true;
             IEnumerable<Task> ts = null;
             if (taskstatusList != null) {
                 TaskStatus selectedStatus = (TaskStatus)Enum.Parse(typeof(TaskStatus), taskstatusList);
@@ -38,17 +36,27 @@ namespace IT_Project_Management_System.Controllers
                 var tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
                 ts = tasks.ToList();
             }
-           
-            
+
+            if (projectId != null)
+            {
+                ts = ts.Where(t => t.ProjectID == projectId);
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             if (searchString != null)
             {
+                page = 1;
                 String searchStringUpper = searchString.ToUpper();
                 ts = ts.Where(s => s.TaskName.Contains(searchStringUpper) ||
                  s.TaskDescription.ToUpper().Contains(searchStringUpper) ||
                  s.TaskKey.ToUpper().Contains(searchStringUpper)
                  );
-              }
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
           ViewBag.taskstatusList = new SelectList(Enum.GetValues(typeof(TaskStatus)).OfType<Enum>()
          .Select(x =>
@@ -57,10 +65,26 @@ namespace IT_Project_Management_System.Controllers
                  Text = Enum.GetName(typeof(TaskStatus), x),
                  Value = (Convert.ToInt32(x)).ToString()
              }), "Value", "Text");
-        
 
-        
-            return View(ts);
+            switch (sortOrder)
+            {
+                case "taskKey_desc":
+                    ts = ts.OrderByDescending(s => s.TaskKey);
+                    break;
+                case "TaskStatus":
+                    ts = ts.OrderBy(s => s.TaskStatus);
+                    break;
+                case "taskStatus_desc":
+                    ts = ts.OrderByDescending(s => s.TaskStatus);
+                    break;
+                default:
+                    ts = ts.OrderBy(s => s.TaskKey);
+                    break;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(ts.ToPagedList(pageNumber, pageSize));
+           
         }
 
         // GET: Tasks/Details/5

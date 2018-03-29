@@ -70,7 +70,8 @@ namespace IT_Project_Management_System.Models
         InProgress,
 
         [Display(Name = "Completed", ResourceType = typeof(Resources.Resource))]
-         Completed
+        Completed
+
     }
     
 }

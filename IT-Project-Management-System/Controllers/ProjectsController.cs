@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
+using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
@@ -17,19 +18,48 @@ namespace IT_Project_Management_System.Controllers
         private SystemContext db = new SystemContext();
 
         // GET: Projects
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.ShowSearchBox = true;
             var projects = db.Projects.Include(p => p.User); 
             if (searchString != null)
             {
-                 projects = projects.Where(s => s.ProjectName.Contains(searchString) ||
-                 s.ProjectDescription.Contains(searchString) ||
-                 s.ProjectKey.Contains(searchString)
+                page = 1;
+                projects = projects.Where(p => p.ProjectName.Contains(searchString) ||
+                 p.ProjectDescription.Contains(searchString) ||
+                 p.ProjectKey.Contains(searchString)
                  ).Include(p => p.User);
             }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    projects = projects.OrderByDescending(p => p.ProjectName);
+                    break;
+                case "Date":
+                    projects = projects.OrderBy(p => p.ProjectStartDate);
+                    break;
+                case "date_desc":
+                    projects = projects.OrderByDescending(p => p.ProjectStartDate );
+                    break;
+                default:
+                    projects = projects.OrderBy(p => p.ProjectName);
+                    break;
+            }
+
             
-             return View(projects.ToList());
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(projects.ToPagedList(pageNumber, pageSize));
+
         }
         public int CalculationPercentage(int NoOfValue, int NoOfTasks )
         {

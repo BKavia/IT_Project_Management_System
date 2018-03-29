@@ -1,4 +1,5 @@
-﻿@model IEnumerable<IT_Project_Management_System.Models.Project>
+﻿@model PagedList.IPagedList<IT_Project_Management_System.Models.Project>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Projects";
@@ -13,63 +14,67 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectKey)
+            @Html.DisplayNameFor(model => model.First().ProjectKey)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectName)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().ProjectName).ToHtmlString(), "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectDescription)
+            @Html.DisplayNameFor(model => model.First().ProjectDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User)
+            @Html.DisplayNameFor(model => model.First().User)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectStartDate)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().ProjectStartDate).ToHtmlString(), "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectEndDate)
+            @Html.DisplayNameFor(model => model.First().ProjectEndDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectStatus)
+            @Html.DisplayNameFor(model => model.First().ProjectStatus)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectKey)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectStatus)
-        </td>
-        <td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectStatus)
+            </td>
+            <td>
 
-            @Html.ActionLink(Resources.Resource.ViewTasks, "ViewProjectTasks", "Tasks", new { projectId = item.ProjectID }, null) |
-            @Html.ActionLink(Resources.Resource.ProjectSummary, "ProjectSummary", "Projects", new { projectId = item.ProjectID }, null) |
-            @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.ProjectID }) |
-            @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.ProjectID }) |
-            @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.ProjectID })
+                @Html.ActionLink(Resources.Resource.ViewTasks, "Index", "Tasks", new { projectId = item.ProjectID }, null) |
+                @Html.ActionLink(Resources.Resource.ProjectSummary, "ProjectSummary", "Projects", new { projectId = item.ProjectID }, null) |
+                @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.ProjectID }) |
+                @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.ProjectID }) |
+                @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.ProjectID })
 
 
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+ @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+

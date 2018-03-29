@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
+using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
@@ -17,19 +18,46 @@ namespace IT_Project_Management_System.Controllers
         private SystemContext db = new SystemContext();
 
         // GET: Users
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.UserTypeSortParm = sortOrder == "UserType" ? "userType_desc" : "UserType";
             ViewBag.ShowSearchBox = true;
             var users = db.Users.AsQueryable();
             if (searchString != null)
             {
+                page = 1;
                 users = users.Where(s => s.UserName.Contains(searchString) ||
                  s.FirstName.Contains(searchString) ||
                  s.LastName.Contains(searchString) ||
                   s.Email.Contains(searchString)
                  );
+            } else
+            {
+                searchString = currentFilter;
             }
-            return View(users.ToList());
+
+            ViewBag.CurrentFilter = searchString;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    users = users.OrderByDescending(s => s.FirstName);
+                    break;
+                case "UserType":
+                    users = users.OrderBy(s => s.UserType);
+                    break;
+                case "userType_desc":
+                    users = users.OrderByDescending(s => s.UserType);
+                    break;
+                default:
+                    users = users.OrderBy(s => s.FirstName);
+                    break;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(users.ToPagedList(pageNumber, pageSize));
+         
         }
 
         // GET: Users/Details/5

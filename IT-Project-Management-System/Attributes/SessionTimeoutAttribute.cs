@@ -13,6 +13,7 @@ namespace IT_Project_Management_System.Attributes
             HttpContext ctx = HttpContext.Current;
             if (HttpContext.Current.Session["loggedUser"] == null)
             {
+
                 filterContext.Result = new RedirectResult("~/Login");
                 return;
             }

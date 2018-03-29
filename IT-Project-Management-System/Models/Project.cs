@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -63,5 +64,10 @@ namespace IT_Project_Management_System.Models
 
         [Display(Name = "Completed", ResourceType = typeof(Resources.Resource))]
         Completed
+
+ 
+
+       
+    
     }
 }
