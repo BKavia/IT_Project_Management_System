@@ -120,8 +120,8 @@
   <data name="Administrator" xml:space="preserve">
     <value>Administrador</value>
   </data>
-  <data name="Comment" xml:space="preserve">
-    <value>Comentario</value>
+  <data name="Comments" xml:space="preserve">
+    <value>Comentarios</value>
   </data>
   <data name="CommentBy" xml:space="preserve">
     <value>Comentario por</value>
@@ -368,5 +368,23 @@
   </data>
   <data name="ProjectSummary" xml:space="preserve">
     <value>Resumen del proyecto</value>
+  </data>
+  <data name="AddComment" xml:space="preserve">
+    <value>Agregar comentario</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Archivos adjuntos</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comentario</value>
+  </data>
+  <data name="Filterby" xml:space="preserve">
+    <value>Filtrado por</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Subir</value>
   </data>
 </root>

@@ -126,8 +126,8 @@
   <data name="BackToList" xml:space="preserve">
     <value>Back to list</value>
   </data>
-  <data name="Comment" xml:space="preserve">
-    <value>Comment</value>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
   </data>
   <data name="CommentBy" xml:space="preserve">
     <value>Comment By</value>
@@ -359,5 +359,23 @@
   </data>
   <data name="ProjectSummary" xml:space="preserve">
     <value>Project Summary</value>
+  </data>
+  <data name="AddComment" xml:space="preserve">
+    <value>Add Comment</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Filterby" xml:space="preserve">
+    <value>Filter by</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
   </data>
 </root>

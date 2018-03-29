@@ -11,7 +11,7 @@
 <div>
     @Html.DisplayFor(model => model.TaskName)
     <hr />
-    <h4> Details </h4>
+    <h4>@Resources.Resource.Details</h4>
     <hr />
     <div class="bs-docs-section">
         <div class="row">
@@ -35,13 +35,13 @@
         </div>
     </div>
     
-    <h4> Comments </h4>
+    <h4>@Resources.Resource.Comments </h4>
     <hr />
     <div id="CommentsAddDiv">
         @{Html.RenderPartial("~/Views/Tasks/_PartialCommentList.cshtml", Model);}
     </div>
 
-    <h4> Attachments </h4>
+    <h4>@Resources.Resource.Attachments </h4>
     <hr />
     <div id="AttachmentAddDiv">
         @{Html.RenderPartial("~/Views/Documents/_PartialAttachmentList.cshtml", Model);}

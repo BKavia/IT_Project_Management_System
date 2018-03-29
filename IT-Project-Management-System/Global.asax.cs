@@ -17,5 +17,15 @@ namespace IT_Project_Management_System
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //Database.SetInitializer<SystemContext>(null);
         }
+
+        protected void Session_Start()
+        {
+            
+        }
+
+        protected void Session_End()
+        {
+
+        }
     }
 }

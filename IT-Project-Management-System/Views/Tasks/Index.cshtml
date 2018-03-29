@@ -8,7 +8,7 @@
 
 }
 
-<h2>Tasks</h2>
+<h2>@Resources.Resource.Tasks</h2>
 
 @using (Html.BeginForm())
 {
@@ -17,7 +17,7 @@
             <div class="col-lg-9"> </div>
             <div class="col-lg-3">
                 <div class="form-inline my-3 my-lg-0">
-                    Filter by  @Html.DropDownList("taskstatusList", null, htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                    @Resources.Resource.Filterby  @Html.DropDownList("taskstatusList", null, htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
 
                 </div>
             </div>
