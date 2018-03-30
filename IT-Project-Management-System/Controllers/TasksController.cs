@@ -26,7 +26,7 @@ namespace IT_Project_Management_System.Controllers
             ViewBag.ShowSearchBox = true;
 
             IEnumerable<Task> ts = null;
-            if (taskstatusList != null) {
+            if (taskstatusList != null && taskstatusList != "All") {
                 TaskStatus selectedStatus = (TaskStatus)Enum.Parse(typeof(TaskStatus), taskstatusList);
                 var tasks = db.Tasks.Where(t => t.TaskStatus == selectedStatus).Include(t => t.Project).Include(t => t.User);
                 ts = tasks.ToList();
@@ -58,14 +58,7 @@ namespace IT_Project_Management_System.Controllers
                 searchString = currentFilter;
             }
 
-          ViewBag.taskstatusList = new SelectList(Enum.GetValues(typeof(TaskStatus)).OfType<Enum>()
-         .Select(x =>
-             new SelectListItem
-             {
-                 Text = Enum.GetName(typeof(TaskStatus), x),
-                 Value = (Convert.ToInt32(x)).ToString()
-             }), "Value", "Text");
-
+         
             switch (sortOrder)
             {
                 case "taskKey_desc":

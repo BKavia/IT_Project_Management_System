@@ -24,10 +24,10 @@
                          new { id = item.CommentID, taskID = Model.TaskID },
                          new AjaxOptions
                          {
-                             UpdateTargetId = "CommentAddDiv",
+                             UpdateTargetId = "CommentsAddDiv",
                              InsertionMode = InsertionMode.Replace,
                              HttpMethod = "GET",
-                             OnBegin = "return confirm('Do you want to delete the Comment?');"
+                             Confirm ="Do you want to delete the Comment?"
 
                          }, null)
                   </div>

@@ -118,7 +118,8 @@ namespace IT_Project_Management_System.Controllers
                 db.Comments.Remove(comment);
                 db.SaveChanges();
             }
-            return RedirectToAction("Details", "Tasks", new { id = taskID });
+            Task task = db.Tasks.Find(taskID);
+            return PartialView("~/Views/Tasks/_PartialCommentList.cshtml", task);
         }
 
         // POST: Comments/Delete/5

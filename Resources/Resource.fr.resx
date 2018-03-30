@@ -378,4 +378,25 @@
   <data name="Upload" xml:space="preserve">
     <value>Télécharger</value>
   </data>
+  <data name="Areyousureyouwanttodeletethis" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer ceci?</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Editer le profil</value>
+  </data>
+  <data name="Numberofcompletedtasks" xml:space="preserve">
+    <value>Nombre de tâches terminées</value>
+  </data>
+  <data name="Numberoftasksinprogress" xml:space="preserve">
+    <value>Nombre de tâches en cours</value>
+  </data>
+  <data name="Numberoftasksnotstarted" xml:space="preserve">
+    <value>Nombre de tâches non démarrées</value>
+  </data>
+  <data name="Totalnumberoftasks" xml:space="preserve">
+    <value>Nombre total de tâches</value>
+  </data>
+  <data name="Yourdetailshavebeenupdated" xml:space="preserve">
+    <value>Vos détails ont été mis à jour</value>
+  </data>
 </root>

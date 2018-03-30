@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this?.
+        /// </summary>
+        public static string Areyousureyouwanttodeletethis {
+            get {
+                return ResourceManager.GetString("Areyousureyouwanttodeletethis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
         public static string Attachments {
@@ -250,6 +259,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Profile.
+        /// </summary>
+        public static string EditProfile {
+            get {
+                return ResourceManager.GetString("EditProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Project.
         /// </summary>
         public static string EditProject {
@@ -354,6 +372,33 @@ namespace Resources {
         public static string NotStarted {
             get {
                 return ResourceManager.GetString("NotStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of completed tasks.
+        /// </summary>
+        public static string Numberofcompletedtasks {
+            get {
+                return ResourceManager.GetString("Numberofcompletedtasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of tasks in progress.
+        /// </summary>
+        public static string Numberoftasksinprogress {
+            get {
+                return ResourceManager.GetString("Numberoftasksinprogress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of tasks not started.
+        /// </summary>
+        public static string Numberoftasksnotstarted {
+            get {
+                return ResourceManager.GetString("Numberoftasksnotstarted", resourceCulture);
             }
         }
         
@@ -664,6 +709,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total number of tasks.
+        /// </summary>
+        public static string Totalnumberoftasks {
+            get {
+                return ResourceManager.GetString("Totalnumberoftasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload.
         /// </summary>
         public static string Upload {
@@ -840,6 +894,15 @@ namespace Resources {
         public static string ViewTasks {
             get {
                 return ResourceManager.GetString("ViewTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your details have been updated.
+        /// </summary>
+        public static string Yourdetailshavebeenupdated {
+            get {
+                return ResourceManager.GetString("Yourdetailshavebeenupdated", resourceCulture);
             }
         }
     }
