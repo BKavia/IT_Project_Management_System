@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Projects</h2>
+<h2>@Resources.Resource.Projects</h2>
 
 <p>
     @Html.ActionLink(Resources.Resource.CreateNew, "Create")
@@ -14,25 +14,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.First().ProjectKey)
+            @Resources.Resource.ProjectKey
         </th>
         <th>
-            @Html.ActionLink(Html.DisplayNameFor(model => model.First().ProjectName).ToHtmlString(), "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink(Resources.Resource.ProjectName, "Index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().ProjectDescription)
+            @Resources.Resource.ProjectDescription
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().User)
+            @Resources.Resource.ProjectPM
         </th>
         <th>
-            @Html.ActionLink(Html.DisplayNameFor(model => model.First().ProjectStartDate).ToHtmlString(), "Index", new { sortOrder = ViewBag.DateSortParm })
+            @Html.ActionLink(Resources.Resource.ProjectStartDate, "Index", new { sortOrder = ViewBag.DateSortParm, searchString = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().ProjectEndDate)
+            @Resources.Resource.ProjectEndDate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().ProjectStatus)
+            @Resources.Resource.ProjectStatus
         </th>
         <th></th>
     </tr>

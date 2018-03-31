@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete User</h2>
+<h2>@Resources.Resource.DeleteUser</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@Resources.Resource.Areyousureyouwanttodeletethis</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -65,7 +65,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            <input type="submit" value="@Resources.Resource.Delete" class="btn btn-primary" /> |
             @Html.ActionLink(Resources.Resource.BackToList, "Index")
         </div>
     }

@@ -339,8 +339,8 @@
   <data name="Users" xml:space="preserve">
     <value>Usuarios</value>
   </data>
-  <data name="DeleteProjects" xml:space="preserve">
-    <value>Eliminar proyectos</value>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Eliminar proyecto</value>
   </data>
   <data name="DeleteTasks" xml:space="preserve">
     <value>Eliminar tareas</value>
@@ -407,5 +407,29 @@
   </data>
   <data name="Yourdetailshavebeenupdated" xml:space="preserve">
     <value>Sus datos han sido actualizados</value>
+  </data>
+  <data name="Project" xml:space="preserve">
+    <value>Proyecto</value>
+  </data>
+  <data name="DeleteUser" xml:space="preserve">
+    <value>Borrar usuario</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Crear usuario</value>
+  </data>
+  <data name="Enddateshouldbegraterthanstartdate" xml:space="preserve">
+    <value>La fecha de finalización debe ser mayor que la fecha de inicio</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="UserDetails" xml:space="preserve">
+    <value>Detalles de usuario</value>
+  </data>
+  <data name="UserNameTaken" xml:space="preserve">
+    <value>Nombre de usuario ha sido tomado</value>
   </data>
 </root>

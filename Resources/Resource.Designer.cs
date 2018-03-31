@@ -178,11 +178,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create New.
         /// </summary>
         public static string CreateNew {
             get {
                 return ResourceManager.GetString("CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create User.
+        /// </summary>
+        public static string CreateUser {
+            get {
+                return ResourceManager.GetString("CreateUser", resourceCulture);
             }
         }
         
@@ -196,11 +214,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Projects.
+        ///   Looks up a localized string similar to Delete Project.
         /// </summary>
-        public static string DeleteProjects {
+        public static string DeleteProject {
             get {
-                return ResourceManager.GetString("DeleteProjects", resourceCulture);
+                return ResourceManager.GetString("DeleteProject", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace Resources {
         public static string DeleteTasks {
             get {
                 return ResourceManager.GetString("DeleteTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete User.
+        /// </summary>
+        public static string DeleteUser {
+            get {
+                return ResourceManager.GetString("DeleteUser", resourceCulture);
             }
         }
         
@@ -291,6 +318,15 @@ namespace Resources {
         public static string EditUser {
             get {
                 return ResourceManager.GetString("EditUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date should be greater than start date.
+        /// </summary>
+        public static string Enddateshouldbegraterthanstartdate {
+            get {
+                return ResourceManager.GetString("Enddateshouldbegraterthanstartdate", resourceCulture);
             }
         }
         
@@ -408,6 +444,15 @@ namespace Resources {
         public static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string Project {
+            get {
+                return ResourceManager.GetString("Project", resourceCulture);
             }
         }
         
@@ -727,6 +772,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Details.
+        /// </summary>
+        public static string UserDetails {
+            get {
+                return ResourceManager.GetString("UserDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address.
         /// </summary>
         public static string UserEmailAddress {
@@ -831,6 +894,15 @@ namespace Resources {
         public static string UserNameRequired {
             get {
                 return ResourceManager.GetString("UserNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username has been taken.
+        /// </summary>
+        public static string UserNameTaken {
+            get {
+                return ResourceManager.GetString("UserNameTaken", resourceCulture);
             }
         }
         

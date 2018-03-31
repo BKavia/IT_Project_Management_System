@@ -49,7 +49,7 @@ namespace IT_Project_Management_System.Controllers
                 page = 1;
                 String searchStringUpper = searchString.ToUpper();
                 ts = ts.Where(s => s.TaskName.Contains(searchStringUpper) ||
-                 s.TaskDescription.ToUpper().Contains(searchStringUpper) ||
+                 s.User.FullName.ToUpper().Contains(searchStringUpper) ||
                  s.TaskKey.ToUpper().Contains(searchStringUpper)
                  );
             }
@@ -110,6 +110,11 @@ namespace IT_Project_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TaskID,ProjectID,TaskName,TaskDescription,TaskStartDate,TaskEndDate,TaskStatus,UserID")] Task task)
         {
+            if (ModelState.IsValidField("TaskStartDate") && ModelState.IsValidField("TaskEndDate") && task.TaskStartDate > task.TaskEndDate)
+            {
+                ModelState.AddModelError("TaskEndDate", @Resources.Resource.Enddateshouldbegraterthanstartdate);
+            }
+
             if (ModelState.IsValid)
             {
                 db.Tasks.Add(task);
@@ -146,6 +151,10 @@ namespace IT_Project_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TaskID,ProjectID,TaskName,TaskDescription,TaskStartDate,TaskEndDate,TaskStatus,UserID")] Task task)
         {
+            if (ModelState.IsValidField("TaskStartDate") && ModelState.IsValidField("TaskEndDate") && task.TaskStartDate > task.TaskEndDate)
+            {
+                ModelState.AddModelError("TaskEndDate", @Resources.Resource.Enddateshouldbegraterthanstartdate);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(task).State = EntityState.Modified;

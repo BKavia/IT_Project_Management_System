@@ -131,6 +131,10 @@ namespace IT_Project_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProjectID,UserID,ProjectKey,ProjectName,ProjectDescription,ProjectStartDate,ProjectEndDate,ProjectStatus")] Project project)
         {
+            if(ModelState.IsValidField("ProjectStartDate") && ModelState.IsValidField("ProjectEndDate") && project.ProjectStartDate > project.ProjectEndDate)
+            {
+                ModelState.AddModelError("ProjectEndDate", @Resources.Resource.Enddateshouldbegraterthanstartdate);
+            }
             if (ModelState.IsValid)
             {
                 project.ProjectKey = project.ProjectKey.ToUpper();
@@ -166,6 +170,10 @@ namespace IT_Project_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProjectID,UserID,ProjectKey,ProjectName,ProjectDescription,ProjectStartDate,ProjectEndDate,ProjectStatus")] Project project)
         {
+            if (ModelState.IsValidField("ProjectStartDate") && ModelState.IsValidField("ProjectEndDate") && project.ProjectStartDate > project.ProjectEndDate)
+            {
+                ModelState.AddModelError("ProjectEndDate", @Resources.Resource.Enddateshouldbegraterthanstartdate);
+            }
             if (ModelState.IsValid)
             {
                 project.ProjectKey = project.ProjectKey.ToUpper();

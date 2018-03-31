@@ -12,12 +12,14 @@
 
 @using (Html.BeginForm())
 {
+    @Html.Hidden("SearchString", new { String = ViewBag.CurrentFilter })
+    @Html.Hidden("sortOrder", new { String = ViewBag.CurrentSort })
     <div class="bs-docs-section">
         <div class="row">
             <div class="col-lg-9"> </div>
             <div class="col-lg-3">
                 <div class="form-inline my-3 my-lg-0">
-                    @Resources.Resource.Filterby  @Html.DropDownList("taskstatusList", new SelectList(new[] { "All"}.Concat(Enum.GetNames(typeof(TaskStatus)))), htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                    @Resources.Resource.Filterby  @Html.DropDownList("taskstatusList", new SelectList(new[] { "All" }.Concat(Enum.GetNames(typeof(TaskStatus)))), htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
 
                 </div>
             </div>
@@ -30,22 +32,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink(Html.DisplayNameFor(model => model.First().TaskKey).ToHtmlString(), "Index", new { sortOrder = ViewBag.TaskKeySortParm })
+            @Html.ActionLink(Resources.Resource.TaskKey, "Index", new { sortOrder = ViewBag.TaskKeySortParm, searchString = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().TaskName)
+            @Resources.Resource.TaskName
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().User)
+            @Resources.Resource.TaskAssignedTo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().TaskStartDate)
+            @Resources.Resource.TaskStartDate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().TaskEndDate)
+            @Resources.Resource.TaskEndDate
         </th>
         <th>
-            @Html.ActionLink(Html.DisplayNameFor(model => model.First().TaskStatus).ToHtmlString(), "Index", new { sortOrder = ViewBag.TaskStatusSortParm })
+            @Html.ActionLink(Resources.Resource.TaskStatus, "Index", new { sortOrder = ViewBag.TaskStatusSortParm, searchString = ViewBag.CurrentFilter })
         </th>
         <th></th>
     </tr>
@@ -83,6 +85,6 @@
             </td>
         </tr>
     }
- </table>
+</table>
 <br />
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

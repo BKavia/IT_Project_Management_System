@@ -339,8 +339,8 @@
   <data name="ViewTasks" xml:space="preserve">
     <value>View Tasks</value>
   </data>
-  <data name="DeleteProjects" xml:space="preserve">
-    <value>Delete Projects</value>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Delete Project</value>
   </data>
   <data name="DeleteTasks" xml:space="preserve">
     <value>Delete Tasks</value>
@@ -398,5 +398,29 @@
   </data>
   <data name="Yourdetailshavebeenupdated" xml:space="preserve">
     <value>Your details have been updated</value>
+  </data>
+  <data name="Project" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="DeleteUser" xml:space="preserve">
+    <value>Delete User</value>
+  </data>
+  <data name="Enddateshouldbegraterthanstartdate" xml:space="preserve">
+    <value>End date should be greater than start date</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UserDetails" xml:space="preserve">
+    <value>User Details</value>
+  </data>
+  <data name="UserNameTaken" xml:space="preserve">
+    <value>Username has been taken</value>
   </data>
 </root>

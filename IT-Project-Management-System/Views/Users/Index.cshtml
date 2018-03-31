@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Users</h2>
+<h2>@Resources.Resource.Users</h2>
 
 <p>
     @Html.ActionLink(Resources.Resource.CreateNew, "Create")
@@ -13,25 +13,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink(Html.DisplayNameFor(model => model.First().FirstName).ToHtmlString(), "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink(Resources.Resource.UserFirstName, "Index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().LastName)
+            @Resources.Resource.UserLastName
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Email)
+            @Resources.Resource.UserEmailAddress
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().PhoneNumber)
+            @Resources.Resource.UserPhoneNumber
         </th>
         <th>
-            @Html.ActionLink(Html.DisplayNameFor(model => model.First().UserType).ToHtmlString(), "Index", new { sortOrder = ViewBag.UserTypeSortParm })
+            @Html.ActionLink(Resources.Resource.UserUserType, "Index", new { sortOrder = ViewBag.UserTypeSortParm, searchString = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().UserName)
+            @Resources.Resource.UserName
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Language)
+            @Resources.Resource.UserLanguage
         </th>
         <th></th>
     </tr>

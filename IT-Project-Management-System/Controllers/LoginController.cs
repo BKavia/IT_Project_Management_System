@@ -21,8 +21,8 @@ namespace IT_Project_Management_System.Controllers
             {
                 FormsAuthentication.SignOut();
             }
-            Session.Clear();
-            Session.Abandon();
+            System.Web.HttpContext.Current.Session.Clear();
+            System.Web.HttpContext.Current.Session.Abandon();
             return View();
         }
 
@@ -51,9 +51,9 @@ namespace IT_Project_Management_System.Controllers
             else
             {
                 SetCulture(foundUser.Language.ToString());
-                Session.Add("loggedUser", foundUser);
+                System.Web.HttpContext.Current.Session.Add("loggedUser", foundUser);
                 FormsAuthentication.SetAuthCookie(user.UserName, false);
-           
+                
                 // var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddMinutes(20), false, foundUser.UserType.ToString());
                 //string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                 //var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);

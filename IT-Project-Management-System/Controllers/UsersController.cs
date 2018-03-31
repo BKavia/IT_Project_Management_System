@@ -31,7 +31,9 @@ namespace IT_Project_Management_System.Controllers
                 users = users.Where(s => s.UserName.Contains(searchString) ||
                  s.FirstName.Contains(searchString) ||
                  s.LastName.Contains(searchString) ||
-                  s.Email.Contains(searchString)
+                  s.Email.Contains(searchString) ||
+                  s.UserType.ToString().Contains(searchString) ||
+                  s.UserName.Contains(searchString)
                  );
             } else
             {
@@ -88,6 +90,11 @@ namespace IT_Project_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserID,FirstName,LastName,Email,PhoneNumber,UserName,UserPassword,UserType,Language")] User user)
         {
+            if (db.Users.Any(u => u.UserName == user.UserName))
+            {
+                ModelState.AddModelError("UserName", @Resources.Resource.UserNameTaken);
+
+            }
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);
@@ -164,16 +171,11 @@ namespace IT_Project_Management_System.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
-        public JsonResult DoesUserExist(string Username)
-        {
-            var userFound = !db.Users.Any(u => u.UserName == Username);
-            return Json(userFound,JsonRequestBehavior.AllowGet);
-        }
+        
         // GET: Users/EditProfile/5
         public ActionResult EditProfile()
         {
-            User loggedUser = (User)Session["loggedUser"]; 
+            User loggedUser = (User)Session["loggedUser"];
             return View(loggedUser);
         }
         [HttpPost]
@@ -182,10 +184,13 @@ namespace IT_Project_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
+                User loggedUser = (User)Session["loggedUser"];
+                user.UserType = loggedUser.UserType;
+
                 db.Entry(user).State = EntityState.Modified;
                 SetCulture(user.Language.ToString());
                 db.SaveChanges();
-                ViewBag.Message = "Your details have been updated";
+                ViewBag.Message = @Resources.Resource.Yourdetailshavebeenupdated;
             }
             return View(user);
         }
