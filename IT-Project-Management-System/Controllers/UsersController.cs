@@ -175,6 +175,7 @@ namespace IT_Project_Management_System.Controllers
         // GET: Users/EditProfile/5
         public ActionResult EditProfile()
         {
+          
             User loggedUser = (User)Session["loggedUser"];
             return View(loggedUser);
         }

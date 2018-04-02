@@ -26,48 +26,51 @@ namespace IT_Project_Management_System.Controllers
             return View();
         }
 
-        [HttpGet]
         public ActionResult LogOff()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                FormsAuthentication.SignOut();
-                Session.Abandon();
-                Session["loggedUser"] = null;
-            }
-            return RedirectToAction("Index");
+           // if (User.Identity.IsAuthenticated)
+            //{
+            //    FormsAuthentication.SignOut();
+            //    Session.Abandon();
+            //    Session["loggedUser"] = null;
+            //}
+            return View("Index");
         }
 
         [HttpPost]
         public ActionResult Index([Bind(Include = "UserName,UserPassword")] User user)
         {
 
-            User foundUser = db.Users.SingleOrDefault((u => u.UserName.Equals(user.UserName) && u.UserPassword.Equals(user.UserPassword)));
+            if (ModelState.IsValidField("UserName") && ModelState.IsValidField("UserPassword"))
+            {
+               // bool found = Membership.ValidateUser(user.UserName, user.UserPassword);
+                User foundUser = db.Users.SingleOrDefault((u => u.UserName.Equals(user.UserName) && u.UserPassword.Equals(user.UserPassword)));
             
-            if (foundUser == null)
-            {
-                ViewBag.errorMessage = "User was not found";
-            }
-            else
-            {
-                SetCulture(foundUser.Language.ToString());
-                System.Web.HttpContext.Current.Session.Add("loggedUser", foundUser);
-                FormsAuthentication.SetAuthCookie(user.UserName, false);
-                
-                // var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddMinutes(20), false, foundUser.UserType.ToString());
-                //string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                //var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                //HttpContext.Response.Cookies.Add(authCookie);
-
-                if (foundUser.UserType == UserType.Administrator || foundUser.UserType == UserType.ProjectManager)
+                if (foundUser == null)
                 {
-                    return RedirectToAction("Index", "Projects");
+                    ViewBag.errorMessage =  "Username was not found";
                 }
-                else {
-                    return RedirectToAction("Index", "Tasks");
+                else
+                {
+                    SetCulture(foundUser.Language.ToString());
+                    System.Web.HttpContext.Current.Session.Add("loggedUser", foundUser);
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                
+                    // var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddMinutes(20), false, foundUser.UserType.ToString());
+                    //string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    //var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    //HttpContext.Response.Cookies.Add(authCookie);
+
+                    if (foundUser.UserType == UserType.Administrator || foundUser.UserType == UserType.ProjectManager)
+                    {
+                        return RedirectToAction("Index", "Projects");
+                    }
+                    else {
+                        return RedirectToAction("Index", "Tasks");
+
+                    }
 
                 }
-
             }
             
             return View(user);
