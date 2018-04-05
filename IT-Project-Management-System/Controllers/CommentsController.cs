@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
-    [SessionTimeout]
+    [Authorize]
     public class CommentsController : BaseController
     {
         private SystemContext db = new SystemContext();
@@ -66,7 +63,7 @@ namespace IT_Project_Management_System.Controllers
 
             Task task = db.Tasks.Find(comment.TaskID);
         
-            return PartialView("~/Views/Tasks/_PartialCommentList.cshtml", task);
+            return PartialView("~/Views/Comments/_PartialCommentList.cshtml", task);
         }
 
        
@@ -119,7 +116,7 @@ namespace IT_Project_Management_System.Controllers
                 db.SaveChanges();
             }
             Task task = db.Tasks.Find(taskID);
-            return PartialView("~/Views/Tasks/_PartialCommentList.cshtml", task);
+            return PartialView("~/Views/Comments/_PartialCommentList.cshtml", task);
         }
 
         // POST: Comments/Delete/5

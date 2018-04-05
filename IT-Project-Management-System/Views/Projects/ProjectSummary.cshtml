@@ -8,9 +8,10 @@
 <div class="form-horizontal">
     <hr />
     <div class="form-group">
-        @Resources.Resource.Totalnumberoftasks 
+        @Resources.Resource.Totalnumberoftasks
         <div class="col-md-10">
-            @ViewBag.NoOfTasks
+          
+            @Html.ActionLink((ViewBag.NoOfTasks).ToString() as string, "Index", "Tasks", new { projectId = ViewBag.ProjectId }, null)
         </div>
     </div>
 
@@ -40,6 +41,7 @@
     <div class="progress-bar bg-info" role="progressbar" style="width:  @ViewBag.percNoOfTasksInProgress%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
     <div class="progress-bar bg-danger" role="progressbar" style="width:  @ViewBag.percNoOfTasksNotStarted%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
+
 <div>
     @Html.ActionLink(Resources.Resource.BackToList, "Index")
 </div>

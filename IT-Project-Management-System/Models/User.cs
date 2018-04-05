@@ -68,27 +68,27 @@ namespace IT_Project_Management_System.Models
         public virtual Language Language { get; set; }
     }
 
-    public enum UserType:int
+    public enum UserType
     {
         [Display(Name = "NormalUser", ResourceType = typeof(Resources.Resource))]
-        NormalUser = 0,
+        NormalUser,
 
         [Display(Name = "Administrator", ResourceType = typeof(Resources.Resource))]
-        Administrator = 1,
+        Administrator,
 
         [Display(Name = "ProjectManager", ResourceType = typeof(Resources.Resource))]
-        ProjectManager = 2
+        ProjectManager
     }
 
     public enum Language 
     {
         [Display(Name = "English", ResourceType = typeof(Resources.Resource))]
-        en = 0,
+        en,
 
         [Display(Name = "Spanish", ResourceType = typeof(Resources.Resource))]
-        es = 1,
+        es,
 
         [Display(Name = "French", ResourceType = typeof(Resources.Resource))]
-        fr = 2
+        fr
     }
 }

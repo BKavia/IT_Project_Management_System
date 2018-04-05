@@ -1,6 +1,8 @@
-﻿@using IT_Project_Management_System.Models;
-@model PagedList.IPagedList<IT_Project_Management_System.Models.Task>
+﻿@using IT_Project_Management_System.Helpers;
+@using IT_Project_Management_System.Models;
 @using PagedList.Mvc;
+@model PagedList.IPagedList<IT_Project_Management_System.Models.Task>
+
 
 @{
     ViewBag.Title = "Tasks";
@@ -77,11 +79,11 @@
                 @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.TaskID }) |
                 @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.TaskID })
 
-                @{ User loggedUser = (User)HttpContext.Current.Session["loggedUser"]; }
-                @if (loggedUser.UserType != UserType.NormalUser)
+                @{ UserType userType = UserHelper.getUser().UserType;}
+                @if (userType != UserType.NormalUser)
                 {
                     @:| @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.TaskID })
-                }
+}
             </td>
         </tr>
     }

@@ -43,14 +43,11 @@ namespace IT_Project_Management_System.Helpers
         {
             return _cultures[0]; // return Default culture
         }
+
         public static string GetCurrentCulture()
         {
             return Thread.CurrentThread.CurrentCulture.Name;
         }
-
-      
-
-
     }
 }
 

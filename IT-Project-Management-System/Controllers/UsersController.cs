@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using IT_Project_Management_System.Attributes;
+using IT_Project_Management_System.Helpers;
 using IT_Project_Management_System.Models;
 using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
-    [SessionTimeout]
+    [Authorize]
     public class UsersController : BaseController
     {
         private SystemContext db = new SystemContext();
@@ -32,8 +30,7 @@ namespace IT_Project_Management_System.Controllers
                  s.FirstName.Contains(searchString) ||
                  s.LastName.Contains(searchString) ||
                   s.Email.Contains(searchString) ||
-                  s.UserType.ToString().Contains(searchString) ||
-                  s.UserName.Contains(searchString)
+                  s.UserType.ToString().Contains(searchString)
                  );
             } else
             {
@@ -175,18 +172,16 @@ namespace IT_Project_Management_System.Controllers
         // GET: Users/EditProfile/5
         public ActionResult EditProfile()
         {
-          
-            User loggedUser = (User)Session["loggedUser"];
-            return View(loggedUser);
+           User user = UserHelper.getUser();
+           return View(user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditProfile([Bind(Include = "UserID,FirstName,LastName,Email,PhoneNumber,UserName,UserPassword,UserType,Language")] User user)
+        public ActionResult EditProfile([Bind(Include = "UserID,FirstName,LastName,Email,PhoneNumber,UserName,UserPassword,UserType,UserType,Language")] User user)
         {
             if (ModelState.IsValid)
             {
-                User loggedUser = (User)Session["loggedUser"];
-                user.UserType = loggedUser.UserType;
+                user.UserType = UserHelper.getUser().UserType;
 
                 db.Entry(user).State = EntityState.Modified;
                 SetCulture(user.Language.ToString());

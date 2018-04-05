@@ -1,13 +1,8 @@
-﻿using IT_Project_Management_System.Attributes;
-using IT_Project_Management_System.Helpers;
-using IT_Project_Management_System.Models;
+﻿using IT_Project_Management_System.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 
 namespace IT_Project_Management_System.Controllers
 {

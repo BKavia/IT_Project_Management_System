@@ -4,15 +4,13 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
 using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
-    [SessionTimeout]
+    [Authorize]
     public class TasksController : BaseController
     {
         private SystemContext db = new SystemContext();

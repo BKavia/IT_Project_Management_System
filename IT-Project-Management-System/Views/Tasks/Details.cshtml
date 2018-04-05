@@ -38,7 +38,7 @@
     <h4>@Resources.Resource.Comments </h4>
     <hr />
     <div id="CommentsAddDiv">
-        @{Html.RenderPartial("~/Views/Tasks/_PartialCommentList.cshtml", Model);}
+        @{Html.RenderPartial("~/Views/Comments/_PartialCommentList.cshtml", Model);}
     </div>
 
     <h4>@Resources.Resource.Attachments </h4>
@@ -52,20 +52,3 @@
         @Html.ActionLink(Resources.Resource.BackToList, "Index")
     </p>
 </div>
-<script>
-    function submitComment() {
-        $.ajax({
-            url: "/Comments/Create",
-            contentType: "application/html; charset=utf-8",
-            type: 'POST',
-            dataType: 'html',
-            success: function (result) {
-                $("#CommentsAddDiv").html(result);
-            },
-            error: function (xhr, status) {
-                alert(status);
-            }
-        });
-             
-    }
-</script>

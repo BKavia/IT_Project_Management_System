@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
-    [SessionTimeout]
+    [Authorize]
     public class DocumentsController : BaseController
     {
         private SystemContext db = new SystemContext();

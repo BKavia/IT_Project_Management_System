@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using IT_Project_Management_System.Attributes;
 using IT_Project_Management_System.Models;
 using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
-    [SessionTimeout]
+    [Authorize]
     public class ProjectsController : BaseController
     {
         private SystemContext db = new SystemContext();
@@ -78,19 +75,17 @@ namespace IT_Project_Management_System.Controllers
             var tasks = db.Tasks.Where(t => t.ProjectID == projectId).Include(t => t.Project);
             int NoOfTasks = tasks.Count();
             ViewBag.NoOfTasks = NoOfTasks;
-
+            ViewBag.ProjectId = projectId;
 
             var tasksCompleted = tasks.Where(t => t.TaskStatus == TaskStatus.Completed);
             int NoOfCompletedTasks = tasksCompleted.Count();
             ViewBag.NoOfCompletedTasks = NoOfCompletedTasks;
             ViewBag.percNoOfCompletedTasks = CalculationPercentage(NoOfCompletedTasks, NoOfTasks);
 
-
             var tasksInProgress = tasks.Where(t => t.TaskStatus == TaskStatus.InProgress);
             int NoOfTasksInProgress = tasksInProgress.Count();
             ViewBag.NoOfTasksInProgress = NoOfTasksInProgress;
             ViewBag.percNoOfTasksInProgress = CalculationPercentage(NoOfTasksInProgress, NoOfTasks);
-
 
             var tasksNotStarted = tasks.Where(t => t.TaskStatus == TaskStatus.NotStarted);
             int NoOfTasksNotStarted = tasksNotStarted.Count();

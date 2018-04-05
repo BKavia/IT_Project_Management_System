@@ -18,7 +18,6 @@ namespace IT_Project_Management_System.Models
         [Display(Name = "CommentBy", ResourceType = typeof(Resources.Resource))]
         public virtual User User { get; set; }
 
-
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "CommentRequired")]
         [Display(Name = "Comment", ResourceType = typeof(Resources.Resource))]
         [MaxLength(300)]
@@ -26,7 +25,7 @@ namespace IT_Project_Management_System.Models
 
         [Display(Name = "CommentDate", ResourceType = typeof(Resources.Resource))]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public virtual DateTime CommentDate { get; set; }
     }
 }

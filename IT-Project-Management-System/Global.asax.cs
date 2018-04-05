@@ -15,7 +15,6 @@ namespace IT_Project_Management_System
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //Database.SetInitializer<SystemContext>(null);
         }
 
         protected void Session_Start()
