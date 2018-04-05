@@ -80,10 +80,10 @@
                 @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.TaskID })
 
                 @{ UserType userType = UserHelper.getUser().UserType;}
-                @if (userType != UserType.NormalUser)
+                @if (userType != UserType.TeamMember)
                 {
                     @:| @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.TaskID })
-}
+                }
             </td>
         </tr>
     }

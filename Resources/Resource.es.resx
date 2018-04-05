@@ -165,8 +165,8 @@
   <data name="InProgress" xml:space="preserve">
     <value>En progreso</value>
   </data>
-  <data name="NormalUser" xml:space="preserve">
-    <value>Usuario normal</value>
+  <data name="TeamMember" xml:space="preserve">
+    <value>Miembro del equipo</value>
   </data>
   <data name="NotStarted" xml:space="preserve">
     <value>No empezado</value>

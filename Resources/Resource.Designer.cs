@@ -394,15 +394,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Normal User.
-        /// </summary>
-        public static string NormalUser {
-            get {
-                return ResourceManager.GetString("NormalUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Not Started.
         /// </summary>
         public static string NotStarted {
@@ -750,6 +741,15 @@ namespace Resources {
         public static string TaskStatusRequired {
             get {
                 return ResourceManager.GetString("TaskStatusRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team Member.
+        /// </summary>
+        public static string TeamMember {
+            get {
+                return ResourceManager.GetString("TeamMember", resourceCulture);
             }
         }
         

@@ -177,8 +177,8 @@
   <data name="LogOut" xml:space="preserve">
     <value>Connectez - Out</value>
   </data>
-  <data name="NormalUser" xml:space="preserve">
-    <value>Utilisateur normal</value>
+  <data name="TeamMember" xml:space="preserve">
+    <value>Membre de l'équipe</value>
   </data>
   <data name="NotStarted" xml:space="preserve">
     <value>Pas commencé</value>

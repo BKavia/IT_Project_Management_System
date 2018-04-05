@@ -97,7 +97,7 @@ namespace IT_Project_Management_System.Controllers
         public ActionResult Create()
         {
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName");
-            ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.NormalUser), "UserID", "FullName");
+            ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.TeamMember), "UserID", "FullName");
             return View();
         }
 
@@ -138,7 +138,7 @@ namespace IT_Project_Management_System.Controllers
                 return HttpNotFound();
             }
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", task.ProjectID);
-            ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.NormalUser), "UserID", "FullName", task.UserID);
+            ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.TeamMember), "UserID", "FullName", task.UserID);
             return View(task);
         }
 

@@ -70,8 +70,8 @@ namespace IT_Project_Management_System.Models
 
     public enum UserType
     {
-        [Display(Name = "NormalUser", ResourceType = typeof(Resources.Resource))]
-        NormalUser,
+        [Display(Name = "TeamMember", ResourceType = typeof(Resources.Resource))]
+        TeamMember,
 
         [Display(Name = "Administrator", ResourceType = typeof(Resources.Resource))]
         Administrator,
