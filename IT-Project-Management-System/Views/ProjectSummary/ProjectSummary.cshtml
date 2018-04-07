@@ -1,0 +1,75 @@
+﻿@model IT_Project_Management_System.Models.ProjectSummary
+@{
+    ViewBag.Title = "ProjectSummary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Resources.Resource.ProjectSummary  - @ViewBag.projectName @ViewBag.ReportDate</h2>
+<div id="ProjectSummaryDetailDiv">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoOfTasks, htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-1">
+                @Html.DisplayFor(model => model.NoOfTasks)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoOfCompletedTasks, htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-1">
+                @Html.DisplayFor(model => model.NoOfCompletedTasks)
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoOfTasksInProgress, htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-1">
+                @Html.DisplayFor(model => model.NoOfTasksInProgress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoOfTasksNotStarted, htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-1">
+                @Html.DisplayFor(model => model.NoOfTasksNotStarted)
+            </div>
+        </div>
+        <div class="form-group progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width: @ViewBag.percNoOfCompletedTasks%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-info" role="progressbar" style="width:  @ViewBag.percNoOfTasksInProgress%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-danger" role="progressbar" style="width:  @ViewBag.percNoOfTasksNotStarted%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        @using (Ajax.BeginForm("Create", "ProjectSummary", null, new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        AllowCache = false,
+        UpdateTargetId = "ProjectSummaryDiv",
+    }))
+    {
+        @Html.HiddenFor(model => model.NoOfTasks)
+        @Html.HiddenFor(model => model.NoOfTasksInProgress)
+        @Html.HiddenFor(model => model.NoOfTasksNotStarted)
+        @Html.HiddenFor(model => model.NoOfCompletedTasks)
+        @Html.HiddenFor(model => model.ProjectID)
+        @Html.HiddenFor(model => model.UserID)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.Resource.Save" id="submit" class="btn btn-primary" />
+            </div>
+        </div>
+}
+
+    </div>
+
+
+
+
+    <div id="ProjectSummaryDiv">
+        @{Html.RenderPartial("~/Views/ProjectSummary/_PartialProjectSummarylist.cshtml", (IEnumerable<IT_Project_Management_System.Models.ProjectSummary>)ViewBag.projectSummaries);}
+    </div>
+
+    <div>
+        @Html.ActionLink(Resources.Resource.BackToList, "Index", "Projects", null, null)
+    </div>

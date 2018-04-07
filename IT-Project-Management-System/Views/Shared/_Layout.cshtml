@@ -26,7 +26,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/projects/">@Resources.Resource.Projects</a>
                     </li>
-
                     if (userType != UserType.ProjectManager)
                     {
                         <li class="nav-item">
@@ -46,12 +45,10 @@
                         @Html.TextBox("SearchString", null, new { @class = "form-control mr-sm-2", @placeholder = @Resources.Resource.Search })
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">@Resources.Resource.Search</button>
                     </span>
-
                 }
             }
             <ul class="nav nav-pills">
                 <li class="nav-item dropdown show">
-
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('dropdown-menu').classList.toggle('show')">@Html.Raw(UserHelper.getIdentityName())</a>
                     <div id="dropdown-menu" class="dropdown-menu">
                         @(Html.ActionLink(Resources.Resource.Profile, "EditProfile", "Users", null, new { @class = "dropdown-item" }))
@@ -59,14 +56,9 @@
                         {
                             @Html.ActionLink(Resources.Resource.LogOut, "LogOff", "Home", new { }, new { @class = "dropdown-item" });
                         }
-
                     </div>
                 </li>
             </ul>
-
-
-
-
         </nav>
     </header>
     <div class="container">

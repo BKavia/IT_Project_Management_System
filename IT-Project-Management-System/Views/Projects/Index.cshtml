@@ -64,7 +64,7 @@
             <td>
 
                 @Html.ActionLink(Resources.Resource.ViewTasks, "Index", "Tasks", new { projectId = item.ProjectID }, null) |
-                @Html.ActionLink(Resources.Resource.ProjectSummary, "ProjectSummary", "Projects", new { projectId = item.ProjectID }, null) |
+                @Html.ActionLink(Resources.Resource.ProjectSummary, "ProjectSummary", "ProjectSummary", new { projectId = item.ProjectID }, null) |
                 @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.ProjectID }) |
                 @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.ProjectID }) |
                 @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.ProjectID })
@@ -76,5 +76,5 @@
 
 </table>
 <br />
- @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 

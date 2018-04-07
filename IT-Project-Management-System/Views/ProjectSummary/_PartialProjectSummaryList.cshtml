@@ -1,0 +1,28 @@
+﻿@model IEnumerable<IT_Project_Management_System.Models.ProjectSummary>
+
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportDate)
+            </td>
+            <td>
+                @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.ProjectSummaryID }) |
+                @Ajax.ActionLink(Resources.Resource.Delete, "Delete",
+          new { id = item.ProjectSummaryID },
+          new AjaxOptions
+          {
+              UpdateTargetId = "ProjectSummaryDiv",
+              InsertionMode = InsertionMode.Replace,
+              HttpMethod = "GET",
+              Confirm = "Do you want to delete the project summary?"
+
+          }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+

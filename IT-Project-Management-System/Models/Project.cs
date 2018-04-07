@@ -1,19 +1,13 @@
-﻿using PagedList;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace IT_Project_Management_System.Models
 {
     public class Project
     {
         public virtual int ProjectID { get; set; }
-
-        
+               
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectPMRequired")]
         [ForeignKey("User")]
         public int? UserID { get; set; }

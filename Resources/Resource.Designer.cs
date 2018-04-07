@@ -394,38 +394,47 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not Started.
+        ///   Looks up a localized string similar to Number of completed tasks.
         /// </summary>
-        public static string NotStarted {
+        public static string NoOfCompletedTasks {
             get {
-                return ResourceManager.GetString("NotStarted", resourceCulture);
+                return ResourceManager.GetString("NoOfCompletedTasks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of completed tasks.
+        ///   Looks up a localized string similar to Total number of tasks.
         /// </summary>
-        public static string Numberofcompletedtasks {
+        public static string NoOfTasks {
             get {
-                return ResourceManager.GetString("Numberofcompletedtasks", resourceCulture);
+                return ResourceManager.GetString("NoOfTasks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Number of tasks in progress.
         /// </summary>
-        public static string Numberoftasksinprogress {
+        public static string NoOfTasksInProgress {
             get {
-                return ResourceManager.GetString("Numberoftasksinprogress", resourceCulture);
+                return ResourceManager.GetString("NoOfTasksInProgress", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Number of tasks not started.
         /// </summary>
-        public static string Numberoftasksnotstarted {
+        public static string NoOfTasksNotStarted {
             get {
-                return ResourceManager.GetString("Numberoftasksnotstarted", resourceCulture);
+                return ResourceManager.GetString("NoOfTasksNotStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Started.
+        /// </summary>
+        public static string NotStarted {
+            get {
+                return ResourceManager.GetString("NotStarted", resourceCulture);
             }
         }
         
@@ -592,6 +601,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report Date.
+        /// </summary>
+        public static string ReportDate {
+            get {
+                return ResourceManager.GetString("ReportDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -750,15 +768,6 @@ namespace Resources {
         public static string TeamMember {
             get {
                 return ResourceManager.GetString("TeamMember", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total number of tasks.
-        /// </summary>
-        public static string Totalnumberoftasks {
-            get {
-                return ResourceManager.GetString("Totalnumberoftasks", resourceCulture);
             }
         }
         

@@ -28,5 +28,8 @@ namespace IT_Project_Management_System.Models
         public System.Data.Entity.DbSet<IT_Project_Management_System.Models.Comment> Comments { get; set; }
 
         public System.Data.Entity.DbSet<IT_Project_Management_System.Models.Document> Documents { get; set; }
+
+        public System.Data.Entity.DbSet<IT_Project_Management_System.Models.ProjectSummary> ProjectSummary { get; set; }
+
     }
 }

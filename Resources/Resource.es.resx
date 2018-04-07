@@ -393,16 +393,16 @@
   <data name="EditProfile" xml:space="preserve">
     <value>Editar perfil</value>
   </data>
-  <data name="Numberofcompletedtasks" xml:space="preserve">
+  <data name="NoOfCompletedTasks" xml:space="preserve">
     <value>Número de tareas completadas</value>
   </data>
-  <data name="Numberoftasksinprogress" xml:space="preserve">
+  <data name="NoOfTasksInProgress" xml:space="preserve">
     <value>Número de tareas en progreso</value>
   </data>
-  <data name="Numberoftasksnotstarted" xml:space="preserve">
+  <data name="NoOfTasksNotStarted" xml:space="preserve">
     <value>Número de tareas no iniciadas</value>
   </data>
-  <data name="Totalnumberoftasks" xml:space="preserve">
+  <data name="NoOfTasks" xml:space="preserve">
     <value>Número total de tareas</value>
   </data>
   <data name="Yourdetailshavebeenupdated" xml:space="preserve">
@@ -431,5 +431,8 @@
   </data>
   <data name="UserNameTaken" xml:space="preserve">
     <value>Nombre de usuario ha sido tomado</value>
+  </data>
+  <data name="ReportDate" xml:space="preserve">
+    <value>Fecha del informe</value>
   </data>
 </root>

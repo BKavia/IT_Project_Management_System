@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using IT_Project_Management_System.Helpers;
 using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
@@ -51,7 +51,7 @@ namespace IT_Project_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                User loggedUser = (User)Session["loggedUser"];
+                User loggedUser = UserHelper.getUser();
                 comment.CommentDate = DateTime.Now;
                 comment.UserID = loggedUser.UserID;
                 comment.User = db.Users.Find(loggedUser.UserID);
