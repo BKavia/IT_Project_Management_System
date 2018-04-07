@@ -12,13 +12,15 @@
     {
 
         <div class="row">
-            <div class="col-lg-11">
+            <div class="col-lg-9">
                 <div class="bs-component">
                     <p>@Html.DisplayFor(modelItem => item.User.FullName)  @Html.DisplayFor(modelItem => item.CommentDate)</p>
-                    <p>@Html.DisplayFor(modelItem => item.CommentText)</p>
+                    <div class="col-lg-8">
+                        <p>@Html.DisplayFor(modelItem => item.CommentText)</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-1">
+            <div class="col-lg-3">
                 <div class="bs-component">
                     @Ajax.ActionLink(Resources.Resource.Delete, "Delete", "Comments",
                          new { id = item.CommentID, taskID = Model.TaskID },

@@ -1,5 +1,5 @@
 ﻿@model IT_Project_Management_System.Models.Task
- 
+
 @{
     IT_Project_Management_System.Models.Document document = new IT_Project_Management_System.Models.Document();
     document.TaskID = Model.TaskID;
@@ -11,24 +11,25 @@
     {
 
         <div class="row">
-            <div class="col-lg-11">
+            <div class="col-lg-9">
                 <div class="bs-component">
-                    <a href="@Url.Content("~/UploadedFiles/" + item.FileName)" target="_blank">@Html.DisplayFor(modelItem => item.FileName)</a> @Html.DisplayFor(modelItem => item.UploadDate)
-
+                    <div class="col-lg-8">
+                        <a href="@Url.Content("~/UploadedFiles/" + item.FileName)" target="_blank">@Html.DisplayFor(modelItem => item.FileName)</a> @Html.DisplayFor(modelItem => item.UploadDate)
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-3">
                 <div class="bs-component">
                     @Ajax.ActionLink(Resources.Resource.Delete, "Delete", "Documents",
-                     new { id = item.DocumentID, taskID = Model.TaskID },
-                     new AjaxOptions
-                     {
-                         UpdateTargetId = "AttachmentAddDiv",
-                         InsertionMode = InsertionMode.Replace,
-                         HttpMethod = "GET" ,
-                         Confirm= "Do you want to delete the Attachment?"
+                          new { id = item.DocumentID, taskID = Model.TaskID },
+                          new AjaxOptions
+                          {
+                              UpdateTargetId = "AttachmentAddDiv",
+                              InsertionMode = InsertionMode.Replace,
+                              HttpMethod = "GET",
+                              Confirm = "Do you want to delete the Attachment?"
 
-                     },null)
+                          }, null)
                 </div>
             </div>
         </div>
