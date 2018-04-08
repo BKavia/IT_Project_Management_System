@@ -3,7 +3,6 @@
 @{
     IT_Project_Management_System.Models.Document document = new IT_Project_Management_System.Models.Document();
     document.TaskID = Model.TaskID;
-
 }
 
 <div class="bs-docs-section">
@@ -21,15 +20,15 @@
             <div class="col-lg-3">
                 <div class="bs-component">
                     @Ajax.ActionLink(Resources.Resource.Delete, "Delete", "Documents",
-                          new { id = item.DocumentID, taskID = Model.TaskID },
-                          new AjaxOptions
-                          {
-                              UpdateTargetId = "AttachmentAddDiv",
-                              InsertionMode = InsertionMode.Replace,
-                              HttpMethod = "GET",
-                              Confirm = "Do you want to delete the Attachment?"
+                               new { id = item.DocumentID, taskID = Model.TaskID },
+                               new AjaxOptions
+                               {
+                                   UpdateTargetId = "AttachmentAddDiv",
+                                   InsertionMode = InsertionMode.Replace,
+                                   HttpMethod = "GET",
+                                   Confirm = "Do you want to delete the Attachment?"
 
-                          }, null)
+                               }, null)
                 </div>
             </div>
         </div>

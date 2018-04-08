@@ -6,28 +6,28 @@
     InsertionMode = InsertionMode.Replace,
     AllowCache = false,
     UpdateTargetId = "CommentsAddDiv",
-    OnSuccess= "document.getElementById('CommentText').value='';"
+    OnSuccess = "document.getElementById('CommentText').value='';"
 }))
 {
-<fieldset>
-    <div class="form-horizontal">
-        <div class="form-group">
-            @Html.HiddenFor(model => model.TaskID, Model.TaskID)
-            <div class="col-md-10">
-               
-                @Html.TextAreaFor(model => model.CommentText, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CommentText, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <fieldset>
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.HiddenFor(model => model.TaskID, Model.TaskID)
+                <div class="col-md-10">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@Resources.Resource.AddComment" class="btn btn-primary" />
+                    @Html.TextAreaFor(model => model.CommentText, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CommentText, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-    </div>
- </fieldset>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Resources.Resource.AddComment" class="btn btn-primary" />
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
 
 }
 

@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Html.DisplayFor(model => model.Project.ProjectName) / @Html.DisplayFor(model => model.TaskKey)</h2>
+<h2>@Html.ActionLink(Model.Project.ProjectName, "Details", "Projects", new { id = Model.ProjectID }, null) / @Html.DisplayFor(model => model.TaskKey)</h2>
 
 <div>
     @Html.DisplayFor(model => model.TaskName)
@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    
+
     <h4>@Resources.Resource.Comments </h4>
     <hr />
     <div id="CommentsAddDiv">

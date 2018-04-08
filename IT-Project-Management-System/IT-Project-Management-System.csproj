@@ -264,13 +264,16 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\ErrorHandlerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\ProjectSummaryController.cs" />
@@ -339,10 +342,11 @@
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ProjectSummary\ProjectSummary.cshtml" />
     <Content Include="Views\ProjectSummary\_PartialProjectSummaryList.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -354,6 +358,7 @@
     <Folder Include="Images\" />
     <Folder Include="UploadedFiles\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\ErrorHandler\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

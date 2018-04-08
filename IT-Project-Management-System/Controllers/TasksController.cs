@@ -11,6 +11,7 @@ using PagedList;
 namespace IT_Project_Management_System.Controllers
 {
     [Authorize]
+    [HandleError]
     public class TasksController : BaseController
     {
         private SystemContext db = new SystemContext();
