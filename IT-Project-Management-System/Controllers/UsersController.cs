@@ -173,7 +173,8 @@ namespace IT_Project_Management_System.Controllers
         public ActionResult EditProfile()
         {
            User user = UserHelper.getUser();
-           return View(user);
+           User dbUser = db.Users.Find(user.UserID);
+           return View(dbUser);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

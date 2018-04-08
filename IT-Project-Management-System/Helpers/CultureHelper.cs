@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Web;
 
 namespace IT_Project_Management_System.Helpers
 {
     public static class CultureHelper
     {
        
-        // Include ONLY cultures you are implementing
+        //Langiages supported
         private static readonly List<string> _cultures = new List<string> {
-        "en-GB",  // first culture is the DEFAULT
-        "es", // Spanish NEUTRAL culture
-        "fr"  // Freanch NEUTRAL culture
+        "en-GB",  // DEFAULT english language
+        "es", // Spanish
+        "fr"  // Freanch
         
-    };
+        };
 
         /// <summary>
         /// Returns a valid culture name based on "name" parameter. If "name" is not valid, it returns the default culture "en-GB"

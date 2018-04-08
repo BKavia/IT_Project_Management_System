@@ -42,17 +42,6 @@ namespace IT_Project_Management_System.Controllers
                 {
                     SetCulture(foundUser.Language.ToString());
 
-                    //string[] roles = new string[] { foundUser.UserType.ToString() };
-
-                    //var identity = new System.Security.Principal.GenericIdentity(foundUser.FullName);
-                    // var identity = new ClaimsIdentity(HttpContext.Current.User.Identity);
-                    //identity.Actor = new ClaimsIdentity();
-                    //identity.Actor.AddClaim(new Claim("Your", "Values"));
-                    //var principal = new System.Security.Principal.GenericPrincipal(identity, roles);
-                    // principal.UserDetails = user;
-                    //  Thread.CurrentPrincipal = principal;
-
-                    // System.Web.HttpContext.Current.User = principal;
                     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
                     string userdata = serializer.Serialize(foundUser);
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
@@ -71,35 +60,6 @@ namespace IT_Project_Management_System.Controllers
                     HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                     cookie.HttpOnly = true;
                     Response.Cookies.Add(cookie);
-
-                    /*
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, foundUser.FullName),
-                        new Claim(ClaimTypes.Role, foundUser.UserType.ToString())
-                    };
-
-                    var identity = new ClaimsIdentity("MyCookieMiddlewareInstance");
-                    identity.AddClaims(claims);
-
-                    var principal = new ClaimsPrincipal(identity);
-
-                    HttpContext.Authentication.SignInAsync("MyCookieMiddlewareInstance",
-                        principal,
-                        new AuthenticationProperties
-                        {
-                            ExpiresUtc = DateTime.UtcNow.AddMinutes(20)
-                        });
-*/
-
-
-                  //  System.Web.HttpContext.Current.Session.Add("loggedUser", foundUser);
-                   // FormsAuthentication.SetAuthCookie(user.UserName, false);
-                
-                    // var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddMinutes(20), false, foundUser.UserType.ToString());
-                    //string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                    //var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                    //HttpContext.Response.Cookies.Add(authCookie);
 
                     if (foundUser.UserType == UserType.Administrator || foundUser.UserType == UserType.ProjectManager)
                     {
