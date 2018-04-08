@@ -5,13 +5,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using IT_Project_Management_System.Helpers;
 using IT_Project_Management_System.Models;
 using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
     [Authorize]
-    [HandleError]
     public class TasksController : BaseController
     {
         private SystemContext db = new SystemContext();
@@ -39,6 +39,12 @@ namespace IT_Project_Management_System.Controllers
             if (projectId != null)
             {
                 ts = ts.Where(t => t.ProjectID == projectId);
+            }
+
+            User user = UserHelper.getUser();
+            if (user.UserType == UserType.TeamMember)
+            {
+                ts = ts.Where(p => p.Project.ProjectStatus != ProjectStatus.Completed);
             }
 
             ViewBag.CurrentFilter = searchString;

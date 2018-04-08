@@ -14,8 +14,8 @@
 
 @using (Html.BeginForm())
 {
-    @Html.Hidden("SearchString", new { String = ViewBag.CurrentFilter })
-    @Html.Hidden("sortOrder", new { String = ViewBag.CurrentSort })
+    @Html.Hidden("SearchString", (object)ViewBag.CurrentFilter)
+    @Html.Hidden("sortOrder", (object)ViewBag.CurrentSort)
     <div class="bs-docs-section">
         <div class="row">
             <div class="col-lg-9"> </div>

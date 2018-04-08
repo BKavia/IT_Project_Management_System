@@ -15,7 +15,7 @@
             <div class="col-md-10">
                 @Html.TextBoxFor(x => x.File, new { @class = "form-control", type = "file" })
                 @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })<br/>
-                @ViewBag.Message
+                <span class="text-danger">@ViewBag.Message</span>
             </div>
         </div>
 
