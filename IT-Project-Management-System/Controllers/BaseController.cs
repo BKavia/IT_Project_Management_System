@@ -6,13 +6,8 @@ using System.Web.Mvc;
 
 namespace IT_Project_Management_System.Controllers
 {
-  
     public class BaseController : Controller
     {
-
-       
-        
-
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             string cultureName = null;
@@ -37,17 +32,18 @@ namespace IT_Project_Management_System.Controllers
 
         public void SetCulture(string culture)
         {
-            // Validate input
             culture = CultureHelper.GetImplementedCulture(culture);
-            // Save culture in a cookie
+            // Save language in a cookie
             HttpCookie cookie = Request.Cookies["_culture"];
             if (cookie != null)
-                cookie.Value = culture;   // update cookie value
+                cookie.Value = culture; 
             else
             {
-                cookie = new HttpCookie("_culture");
-                cookie.Value = culture;
-                cookie.Expires = DateTime.Now.AddYears(1);
+                cookie = new HttpCookie("_culture")
+                {
+                    Value = culture,
+                    Expires = DateTime.Now.AddYears(1)
+                };
             }
             Session.Add("culture", culture);
             Response.Cookies.Add(cookie);

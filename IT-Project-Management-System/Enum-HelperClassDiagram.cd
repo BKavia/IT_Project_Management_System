@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IT_Project_Management_System.Helpers.UserHelper">
+    <Position X="2.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Helpers\UserHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT_Project_Management_System.Helpers.CultureHelper">
+    <Position X="4.75" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAgAAAA=</HashCode>
+      <FileName>Helpers\CultureHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="IT_Project_Management_System.Models.Language">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="IT_Project_Management_System.Models.ProjectStatus">
+    <Position X="2" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Project.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="IT_Project_Management_System.Models.TaskStatus">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Task.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="IT_Project_Management_System.Models.UserType">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
