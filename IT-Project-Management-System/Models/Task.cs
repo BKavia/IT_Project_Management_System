@@ -74,11 +74,11 @@ namespace IT_Project_Management_System.Models
     public enum TaskStatus
     {
         //Signifies that the task has not started
-        [Display(Name = "Not Started", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "NotStarted", ResourceType = typeof(Resources.Resource))]
          NotStarted,
 
         //Signifies that the task is in progress
-        [Display(Name = "In Progress", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "InProgress", ResourceType = typeof(Resources.Resource))]
         InProgress,
 
         //Signifies that the task has completed
