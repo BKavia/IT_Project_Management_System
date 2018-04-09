@@ -342,8 +342,8 @@
   <data name="DeleteProject" xml:space="preserve">
     <value>Delete Project</value>
   </data>
-  <data name="DeleteTasks" xml:space="preserve">
-    <value>Delete Tasks</value>
+  <data name="DeleteTask" xml:space="preserve">
+    <value>Delete Task</value>
   </data>
   <data name="DeleteUsers" xml:space="preserve">
     <value>Delete Users</value>

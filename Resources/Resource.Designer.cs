@@ -223,11 +223,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Tasks.
+        ///   Looks up a localized string similar to Delete Task.
         /// </summary>
-        public static string DeleteTasks {
+        public static string DeleteTask {
             get {
-                return ResourceManager.GetString("DeleteTasks", resourceCulture);
+                return ResourceManager.GetString("DeleteTask", resourceCulture);
             }
         }
         

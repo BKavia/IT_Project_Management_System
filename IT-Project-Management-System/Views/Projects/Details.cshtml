@@ -81,8 +81,8 @@
     }
     else
     {
-        Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = Model.ProjectID });
+        @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = Model.ProjectID });
         @:|
-        Html.ActionLink(Resources.Resource.BackToList, "Index");
+        @Html.ActionLink(Resources.Resource.BackToList, "Index");
     }
 </p>

@@ -10,8 +10,7 @@ namespace IT_Project_Management_System.Controllers
     public class HomeController : BaseController
     {
         private SystemContext db = new SystemContext();
-        // GET: Login
-       
+        
         public ActionResult Index()
         {
             return View();
@@ -31,7 +30,6 @@ namespace IT_Project_Management_System.Controllers
 
             if (ModelState.IsValidField("UserName") && ModelState.IsValidField("UserPassword"))
             {
-               // bool found = Membership.ValidateUser(user.UserName, user.UserPassword);
                 User foundUser = db.Users.SingleOrDefault((u => u.UserName.Equals(user.UserName) && u.UserPassword.Equals(user.UserPassword)));
             
                 if (foundUser == null)
@@ -45,20 +43,22 @@ namespace IT_Project_Management_System.Controllers
                     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
                     string userdata = serializer.Serialize(foundUser);
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
-    1,                                     // ticket version
-    foundUser.FullName,                              // authenticated username
-    DateTime.Now,                          // issueDate
-    DateTime.Now.AddMinutes(30),           // expiryDate
-    false,                          // true to persist across browser sessions
-    userdata,                              // can be used to store additional user data
-    FormsAuthentication.FormsCookiePath);  // the path for the cookie
+                        1,                                     // ticket version
+                        foundUser.FullName,                    // authenticated username
+                        DateTime.Now,                          // issueDate
+                        DateTime.Now.AddMinutes(30),           // expiryDate
+                        false,                                 // if true, then persist across browser sessions
+                        userdata,                              // store the user model
+                        FormsAuthentication.FormsCookiePath);  // cookie path
 
                     // Encrypt the ticket using the machine key
                     string encryptedTicket = FormsAuthentication.Encrypt(ticket);
 
                     // Add the cookie to the request to save it
-                    HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                    cookie.HttpOnly = true;
+                    HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+                    {
+                        HttpOnly = true
+                    };
                     Response.Cookies.Add(cookie);
 
                     if (foundUser.UserType == UserType.Administrator || foundUser.UserType == UserType.ProjectManager)
