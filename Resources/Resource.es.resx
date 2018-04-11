@@ -435,4 +435,7 @@
   <data name="ReportDate" xml:space="preserve">
     <value>Fecha del informe</value>
   </data>
+  <data name="MyTasksOnly" xml:space="preserve">
+    <value>Mis tareas solo</value>
+  </data>
 </root>

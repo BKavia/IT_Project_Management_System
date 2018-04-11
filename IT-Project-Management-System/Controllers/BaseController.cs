@@ -6,8 +6,10 @@ using System.Web.Mvc;
 
 namespace IT_Project_Management_System.Controllers
 {
+    //Base Controller that most Controllers extend.
     public class BaseController : Controller
     {
+        //
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             string cultureName = null;
@@ -15,13 +17,11 @@ namespace IT_Project_Management_System.Controllers
             // Attempt to read the culture cookie from Request
             HttpCookie cultureCookie = Request.Cookies["_culture"];
             if (cultureCookie != null)
+            {
                 cultureName = cultureCookie.Value;
-            else
-                cultureName = Request.UserLanguages != null && Request.UserLanguages.Length > 0 ?
-                        Request.UserLanguages[0] :  // obtain it from HTTP header AcceptLanguages
-                        null;
-            // Validate culture name
-            cultureName = CultureHelper.GetImplementedCulture(cultureName); // This is safe
+            }
+            
+            cultureName = CultureHelper.GetImplementedCulture(cultureName);
 
             // Modify current thread's cultures            
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);

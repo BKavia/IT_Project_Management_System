@@ -426,4 +426,7 @@
   <data name="ReportDate" xml:space="preserve">
     <value>Report Date</value>
   </data>
+  <data name="MyTasksOnly" xml:space="preserve">
+    <value>My Tasks Only</value>
+  </data>
 </root>

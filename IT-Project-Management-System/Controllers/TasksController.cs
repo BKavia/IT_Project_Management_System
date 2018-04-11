@@ -17,38 +17,43 @@ namespace IT_Project_Management_System.Controllers
         private SystemContext db = new SystemContext();
 
          // GET: Tasks
-        public ActionResult Index(int? projectId, string sortOrder, string searchString, string taskstatusList, string currentFilter, int? page)
+        public ActionResult Index(int? projectId, string sortOrder, string searchString, string taskstatusList, Boolean? myTasksOnly, string currentFilter, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TaskKeySortParm = String.IsNullOrEmpty(sortOrder) ? "taskKey_desc" : "";
             ViewBag.TaskStatusSortParm = sortOrder == "TaskStatus" ? "taskStatus_desc" : "TaskStatus";
             ViewBag.ShowSearchBox = true;
+            ViewBag.onlyMyTasks = (myTasksOnly == null)?true:myTasksOnly;
+            
 
-            IEnumerable<Task> ts = null;
+            IQueryable<Task> tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
+            User user = UserHelper.getUser();
             if (taskstatusList != null && taskstatusList != "All") {
                 TaskStatus selectedStatus = (TaskStatus)Enum.Parse(typeof(TaskStatus), taskstatusList);
-                var tasks = db.Tasks.Where(t => t.TaskStatus == selectedStatus).Include(t => t.Project).Include(t => t.User);
-                ts = tasks.ToList();
+                tasks = tasks.Where(t => t.TaskStatus == selectedStatus);
             }
-            else
-            {
-                var tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
-                ts = tasks.ToList();
-            }
-
+         
             if (projectId != null)
             {
-                ts = ts.Where(t => t.ProjectID == projectId);
+                tasks = tasks.Where(t => t.ProjectID == projectId);
             }
-
-            User user = UserHelper.getUser();
-            if (user.UserType == UserType.TeamMember)
+            if (user.UserType == UserType.ProjectManager)
             {
-                ts = ts.Where(p => p.Project.ProjectStatus != ProjectStatus.Completed);
+                tasks = tasks.Where(p => p.Project.UserID == user.UserID);
+            }
+                if (user.UserType == UserType.TeamMember)
+            {
+                tasks = tasks.Where(p => p.Project.ProjectStatus != ProjectStatus.Completed);
+                if (ViewBag.onlyMyTasks == true)
+                {
+                    tasks = tasks.Where(u => u.UserID == user.UserID);
+                }
             }
 
+            
             ViewBag.CurrentFilter = searchString;
 
+            IEnumerable<Task> ts = tasks.ToList();
             if (searchString != null)
             {
                 page = 1;
@@ -63,7 +68,6 @@ namespace IT_Project_Management_System.Controllers
                 searchString = currentFilter;
             }
 
-         
             switch (sortOrder)
             {
                 case "taskKey_desc":
@@ -79,6 +83,7 @@ namespace IT_Project_Management_System.Controllers
                     ts = ts.OrderBy(s => s.TaskKey);
                     break;
             }
+
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             return View(ts.ToPagedList(pageNumber, pageSize));
@@ -146,6 +151,16 @@ namespace IT_Project_Management_System.Controllers
             }
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", task.ProjectID);
             ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.TeamMember), "UserID", "FullName", task.UserID);
+            User user = UserHelper.getUser();
+
+            if (task.UserID != user.UserID)
+            {
+                ViewBag.isTaskStatusDisabled = true;
+            }
+            else
+            {
+                ViewBag.isTaskStatusDisabled = false;
+            }
             return View(task);
         }
 

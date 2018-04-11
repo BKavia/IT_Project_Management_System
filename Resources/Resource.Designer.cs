@@ -394,6 +394,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Tasks Only.
+        /// </summary>
+        public static string MyTasksOnly {
+            get {
+                return ResourceManager.GetString("MyTasksOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of completed tasks.
         /// </summary>
         public static string NoOfCompletedTasks {
