@@ -178,12 +178,11 @@ namespace IT_Project_Management_System.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditProfile([Bind(Include = "UserID,FirstName,LastName,Email,PhoneNumber,UserName,UserPassword,UserType,UserType,Language")] User user)
+        public ActionResult EditProfile([Bind(Include = "UserID,FirstName,LastName,Email,PhoneNumber,UserName,UserPassword,UserType,Language")] User user)
         {
             if (ModelState.IsValid)
             {
                 user.UserType = UserHelper.getUser().UserType;
-
                 db.Entry(user).State = EntityState.Modified;
                 SetCulture(user.Language.ToString());
                 db.SaveChanges();
