@@ -9,12 +9,13 @@ using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
+    //Controller for Projects.
     [Authorize]
     public class ProjectsController : BaseController
     {
         private SystemContext db = new SystemContext();
 
-        // GET: Projects
+        // GET: Gets the Project and sort them depending on the passed criteria
         public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -58,7 +59,8 @@ namespace IT_Project_Management_System.Controllers
             return View(projects.ToPagedList(pageNumber, pageSize));
 
         }
-       
+
+        //Load the Projects for the Details View
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {
@@ -74,6 +76,7 @@ namespace IT_Project_Management_System.Controllers
             return View(project);
         }
 
+        //Loads the Objects needed to be displayed for the Create page
         // GET: Projects/Create
         public ActionResult Create()
         {
@@ -81,6 +84,7 @@ namespace IT_Project_Management_System.Controllers
             return View();
         }
 
+        //Method called when the Create Form is submitted. This saves the Project in the database
         // POST: Projects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -104,6 +108,7 @@ namespace IT_Project_Management_System.Controllers
             return View(project);
         }
 
+        //Load the Project for the Edit View and prepare the needed information.Gives BadRequest if the id is not specified
         // GET: Projects/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -120,6 +125,7 @@ namespace IT_Project_Management_System.Controllers
             return View(project);
         }
 
+        //Method called when the Project information edited is to be saved to the database.
         // POST: Projects/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -142,6 +148,7 @@ namespace IT_Project_Management_System.Controllers
             return View(project);
         }
 
+        //Loads the Project for the Delete Confirmation page.
         // GET: Projects/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -157,6 +164,7 @@ namespace IT_Project_Management_System.Controllers
             return View(project);
         }
 
+        //Removes the Project from the database once delete has been confirmed.
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -168,6 +176,7 @@ namespace IT_Project_Management_System.Controllers
             return RedirectToAction("Index");
         }
 
+        //Release the database and resources
         protected override void Dispose(bool disposing)
         {
             if (disposing)

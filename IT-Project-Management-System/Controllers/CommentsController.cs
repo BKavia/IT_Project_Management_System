@@ -130,6 +130,7 @@ namespace IT_Project_Management_System.Controllers
             return RedirectToAction("Index");
         }
 
+        //Release the database and resources
         protected override void Dispose(bool disposing)
         {
             if (disposing)

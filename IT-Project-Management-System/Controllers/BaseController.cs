@@ -9,7 +9,7 @@ namespace IT_Project_Management_System.Controllers
     //Base Controller that most Controllers extend.
     public class BaseController : Controller
     {
-        //
+        //Checks the cookie for the Culture and set the selection in the current Thread
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             string cultureName = null;
@@ -30,10 +30,11 @@ namespace IT_Project_Management_System.Controllers
             return base.BeginExecuteCore(callback, state);
         }
 
+        //Mehtod is used to set the Language selected to the session and create a cookie.
         public void SetCulture(string culture)
         {
             culture = CultureHelper.GetImplementedCulture(culture);
-            // Save language in a cookie
+            
             HttpCookie cookie = Request.Cookies["_culture"];
             if (cookie != null)
                 cookie.Value = culture; 

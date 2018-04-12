@@ -14,6 +14,7 @@ namespace IT_Project_Management_System.Controllers
     {
         private SystemContext db = new SystemContext();
 
+        //Method used to calculated percentage values for the tasks.
         public int CalculationPercentage(int NoOfValue, int NoOfTasks)
         {
             int percentage = 0;
@@ -25,6 +26,8 @@ namespace IT_Project_Management_System.Controllers
 
             return percentage;
         }
+
+        //Calculate all the Project Summary details needed for the report page
         public ActionResult ProjectSummary(int projectId)
         {
 
@@ -64,6 +67,7 @@ namespace IT_Project_Management_System.Controllers
             return View("ProjectSummary", ps);
         }
 
+        //Used to load the Project Summary Report from the database to view Historic Summaries.
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -106,6 +110,7 @@ namespace IT_Project_Management_System.Controllers
 
         }
 
+        //Used by Ajax to save Project Summary into database. Returns a Partial View to update the User Interface.
         [HttpPost]
         public PartialViewResult Create([Bind(Include = "NoOfTasks,NoOfTasksInProgress,NoOfTasksNotStarted,NoOfCompletedTasks,ProjectID,UserID")] ProjectSummary projectSummary)
         {
@@ -123,6 +128,7 @@ namespace IT_Project_Management_System.Controllers
             return PartialView("~/Views/ProjectSummary/_PartialProjectSummaryList.cshtml", projectSummaries);
         }
 
+        //Used by Ajax to delete the ProjectSummary. Returns a Partial View to update the User Interface.
         public PartialViewResult Delete(int id)
         {
             User loggedUser = UserHelper.getUser();

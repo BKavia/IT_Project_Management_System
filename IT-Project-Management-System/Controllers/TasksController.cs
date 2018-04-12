@@ -17,7 +17,7 @@ namespace IT_Project_Management_System.Controllers
     {
         private SystemContext db = new SystemContext();
 
-         // GET: Gets the Tasks depending on the passed criteria
+         // GET: Gets the Tasks and sort them depending on the passed criteria
         public ActionResult Index(int? projectId, string sortOrder, string searchString, string taskstatusList, Boolean? myTasksOnly, string currentFilter, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -25,7 +25,7 @@ namespace IT_Project_Management_System.Controllers
             ViewBag.TaskStatusSortParm = sortOrder == "TaskStatus" ? "taskStatus_desc" : "TaskStatus";
             ViewBag.ShowSearchBox = true;
             ViewBag.onlyMyTasks = (myTasksOnly == null)?true: Convert.ToBoolean(myTasksOnly);
-            ViewBag.CurrentFilter = searchString;
+            
 
             IQueryable<Task> tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
             User user = UserHelper.getUser();
@@ -50,8 +50,7 @@ namespace IT_Project_Management_System.Controllers
                     tasks = tasks.Where(u => u.UserID == user.UserID);
                 }
             }
-
-       
+                       
             IEnumerable<Task> ts = tasks.ToList();
             if (searchString != null)
             {
@@ -66,7 +65,7 @@ namespace IT_Project_Management_System.Controllers
             {
                 searchString = currentFilter;
             }
-
+            ViewBag.CurrentFilter = searchString;
             switch (sortOrder)
             {
                 case "taskKey_desc":
@@ -89,7 +88,7 @@ namespace IT_Project_Management_System.Controllers
            
         }
 
-        //Load the Task for Edit
+        //Load the Task for the Details View
         // GET: Tasks/Details/5
         public ActionResult Details(int? id)
         {
@@ -105,7 +104,7 @@ namespace IT_Project_Management_System.Controllers
             return View(task);
         }
 
-        //Load the Objects needed to be displayed on the Create page
+        //Loads the Objects needed to be displayed for the Create page
         // GET: Tasks/Create
         public ActionResult Create()
         {
@@ -114,6 +113,7 @@ namespace IT_Project_Management_System.Controllers
             return View();
         }
 
+        //Method called when the Create Form is submitted. This saves the task in the database
         // POST: Tasks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -138,6 +138,7 @@ namespace IT_Project_Management_System.Controllers
             return View(task);
         }
 
+        //Load the Task for the Edit View and prepare the needed information.Gives BadRequest if the id is not specified
         // GET: Tasks/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -165,6 +166,7 @@ namespace IT_Project_Management_System.Controllers
             return View(task);
         }
 
+        //Method called when the task information edited is to be saved to the database.
         // POST: Tasks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -193,6 +195,7 @@ namespace IT_Project_Management_System.Controllers
             return View(task);
         }
 
+        //Loads the task for the Delete Confirmation page.
         // GET: Tasks/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -208,6 +211,7 @@ namespace IT_Project_Management_System.Controllers
             return View(task);
         }
 
+        //Removes the task from the database once delete has been confirmed.
         // POST: Tasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -219,6 +223,7 @@ namespace IT_Project_Management_System.Controllers
             return RedirectToAction("Index");
         }
 
+        //Release the database and resources
         protected override void Dispose(bool disposing)
         {
             if (disposing)

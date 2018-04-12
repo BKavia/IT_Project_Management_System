@@ -9,6 +9,7 @@ using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
+    //Controller for Documents/Attachments.
     [Authorize]
     public class DocumentsController : BaseController
     {
@@ -35,6 +36,7 @@ namespace IT_Project_Management_System.Controllers
             return View(document);
         }
 
+        //Method used to upload Attachments for a Task. Return a Partial View with a List of Uploaded Documents
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file, int TaskID)
         {
@@ -53,8 +55,6 @@ namespace IT_Project_Management_System.Controllers
                     document.UploadDate = DateTime.Now;
                     db.Documents.Add(document);
                     db.SaveChanges();
-                    ViewBag.Message = "File Uploaded Successfully!!";
-
                 }
                 else
                 {
@@ -71,12 +71,13 @@ namespace IT_Project_Management_System.Controllers
             Task task = db.Tasks.Find(TaskID);
             return PartialView("~/Views/Documents/_PartialAttachmentList.cshtml", task);
         }
+
         // GET: Documents/Create
         public ActionResult Create()
         {
             return View();
         }
-
+                
         // POST: Documents/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -125,6 +126,8 @@ namespace IT_Project_Management_System.Controllers
             return View(document);
         }
 
+        //Used by Ajax to delete the Document from the database that is uploaded against the task.
+        //Returns a Partial View to update the User Interface.
         // GET: Documents/Delete/5
         public ActionResult Delete(int? id, int taskID)
         {
@@ -154,6 +157,7 @@ namespace IT_Project_Management_System.Controllers
             return RedirectToAction("Index");
         }
 
+        //Release the database and resources
         protected override void Dispose(bool disposing)
         {
             if (disposing)

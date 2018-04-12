@@ -11,11 +11,13 @@ namespace IT_Project_Management_System.Controllers
     {
         private SystemContext db = new SystemContext();
         
+        //Loads the Login Page
         public ActionResult Index()
         {
             return View();
         }
 
+        //Used to log the user out of the system
         [HttpGet]
         public ActionResult LogOff()
         {
@@ -23,6 +25,7 @@ namespace IT_Project_Management_System.Controllers
             return RedirectToAction("Index");
         }
 
+        //Method called to log the User into the system
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "UserName,UserPassword")] User user)
