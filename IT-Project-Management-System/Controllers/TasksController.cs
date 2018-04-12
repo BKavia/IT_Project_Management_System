@@ -11,20 +11,21 @@ using PagedList;
 
 namespace IT_Project_Management_System.Controllers
 {
+    //Controller for Tasks.
     [Authorize]
     public class TasksController : BaseController
     {
         private SystemContext db = new SystemContext();
 
-         // GET: Tasks
+         // GET: Gets the Tasks depending on the passed criteria
         public ActionResult Index(int? projectId, string sortOrder, string searchString, string taskstatusList, Boolean? myTasksOnly, string currentFilter, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TaskKeySortParm = String.IsNullOrEmpty(sortOrder) ? "taskKey_desc" : "";
             ViewBag.TaskStatusSortParm = sortOrder == "TaskStatus" ? "taskStatus_desc" : "TaskStatus";
             ViewBag.ShowSearchBox = true;
-            ViewBag.onlyMyTasks = (myTasksOnly == null)?true:myTasksOnly;
-            
+            ViewBag.onlyMyTasks = (myTasksOnly == null)?true: Convert.ToBoolean(myTasksOnly);
+            ViewBag.CurrentFilter = searchString;
 
             IQueryable<Task> tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
             User user = UserHelper.getUser();
@@ -50,9 +51,7 @@ namespace IT_Project_Management_System.Controllers
                 }
             }
 
-            
-            ViewBag.CurrentFilter = searchString;
-
+       
             IEnumerable<Task> ts = tasks.ToList();
             if (searchString != null)
             {
@@ -90,6 +89,7 @@ namespace IT_Project_Management_System.Controllers
            
         }
 
+        //Load the Task for Edit
         // GET: Tasks/Details/5
         public ActionResult Details(int? id)
         {
@@ -105,6 +105,7 @@ namespace IT_Project_Management_System.Controllers
             return View(task);
         }
 
+        //Load the Objects needed to be displayed on the Create page
         // GET: Tasks/Create
         public ActionResult Create()
         {

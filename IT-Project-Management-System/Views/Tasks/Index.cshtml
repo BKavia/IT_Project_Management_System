@@ -11,17 +11,19 @@
 }
 
 <h2>@Resources.Resource.Tasks</h2>
-
+@{ UserType userType = UserHelper.getUser().UserType;}
 @using (Html.BeginForm())
 {
     @Html.Hidden("SearchString", (object)ViewBag.CurrentFilter)
     @Html.Hidden("sortOrder", (object)ViewBag.CurrentSort)
     <div class="bs-docs-section">
         <div class="row">
-            <div class="col-lg-7"> </div>
-            <div class="col-lg-5">
-                <span class="form-inline my-2 my-lg-0">
-                    @Resources.Resource.MyTasksOnly&nbsp; @Html.CheckBox("myTasksOnly", (Boolean)ViewBag.onlyMyTasks, new { @class = "form-control checkbox mr-sm-3" })
+            <div class="col-lg-11">
+                <span class="form-inline my-2 my-lg-0 float-right">
+                    @if (userType == UserType.TeamMember)
+                    {
+                        @Resources.Resource.MyTasksOnly @:&nbsp; @Html.CheckBox("myTasksOnly", (bool)ViewBag.onlyMyTasks, new { @class = "form-control checkbox mr-sm-3" })
+                    }
                     @Resources.Resource.Filterby &nbsp; @Html.DropDownList("taskstatusList", new SelectList(new[] { "All" }.Concat(Enum.GetNames(typeof(TaskStatus)))), htmlAttributes: new { @class = "form-control mr-sm-2" })
                     <input type="submit" value="Filter" class="btn btn-primary" />
                 </span>
@@ -35,7 +37,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink(Resources.Resource.TaskKey, "Index", new { sortOrder = ViewBag.TaskKeySortParm, searchString = ViewBag.CurrentFilter })
+            @Html.ActionLink(Resources.Resource.TaskKey, "Index", new { sortOrder = ViewBag.TaskKeySortParm, searchString = ViewBag.CurrentFilter, myTasksOnly = ViewBag.onlyMyTasks })
         </th>
         <th>
             @Resources.Resource.TaskName
@@ -50,7 +52,7 @@
             @Resources.Resource.TaskEndDate
         </th>
         <th>
-            @Html.ActionLink(Resources.Resource.TaskStatus, "Index", new { sortOrder = ViewBag.TaskStatusSortParm, searchString = ViewBag.CurrentFilter })
+            @Html.ActionLink(Resources.Resource.TaskStatus, "Index", new { sortOrder = ViewBag.TaskStatusSortParm, searchString = ViewBag.CurrentFilter, myTasksOnly = ViewBag.onlyMyTasks })
         </th>
         <th></th>
     </tr>
@@ -80,7 +82,6 @@
                 @Html.ActionLink(Resources.Resource.Edit, "Edit", new { id = item.TaskID }) |
                 @Html.ActionLink(Resources.Resource.Details, "Details", new { id = item.TaskID })
 
-                @{ UserType userType = UserHelper.getUser().UserType;}
                 @if (userType != UserType.TeamMember)
                 {
                     @:| @Html.ActionLink(Resources.Resource.Delete, "Delete", new { id = item.TaskID })
@@ -90,4 +91,4 @@
     }
 </table>
 <br />
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, myTasksOnly = ViewBag.onlyMyTasks }))
