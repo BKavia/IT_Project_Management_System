@@ -28,7 +28,7 @@ namespace IT_Project_Management_System.Controllers
             
 
             IQueryable<Task> tasks = db.Tasks.Include(t => t.Project).Include(t => t.User);
-            User user = UserHelper.getUser();
+            User user = UserHelper.GetUser();
             if (taskstatusList != null && taskstatusList != "All") {
                 TaskStatus selectedStatus = (TaskStatus)Enum.Parse(typeof(TaskStatus), taskstatusList);
                 tasks = tasks.Where(t => t.TaskStatus == selectedStatus);
@@ -153,7 +153,7 @@ namespace IT_Project_Management_System.Controllers
             }
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", task.ProjectID);
             ViewBag.UserID = new SelectList(db.Users.Where(u => u.UserType == UserType.TeamMember), "UserID", "FullName", task.UserID);
-            User user = UserHelper.getUser();
+            User user = UserHelper.GetUser();
 
             if (task.UserID != user.UserID)
             {

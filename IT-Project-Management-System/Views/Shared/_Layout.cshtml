@@ -18,7 +18,7 @@
     <header>
         <h2>IT Project Management System</h2>
         @{ 
-           UserType userType = UserHelper.getUser().UserType;
+           UserType userType = UserHelper.GetUser().UserType;
          }
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <ul class="navbar-nav mr-auto">
@@ -51,7 +51,7 @@
             }
             <ul class="nav nav-pills">
                 <li class="nav-item dropdown show">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('dropdown-menu').classList.toggle('show')">@Html.Raw(UserHelper.getIdentityName())</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('dropdown-menu').classList.toggle('show')">@Html.Raw(UserHelper.GetIdentityName())</a>
                     <div id="dropdown-menu" class="dropdown-menu">
                         @(Html.ActionLink(Resources.Resource.Profile, "EditProfile", "Users", null, new { @class = "dropdown-item" }))
                         @if (User.Identity.IsAuthenticated)

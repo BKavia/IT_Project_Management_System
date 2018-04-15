@@ -10,7 +10,7 @@ namespace IT_Project_Management_System.Helpers
 {
     public static class UserHelper
     {
-        public static User getUser()
+        public static User GetUser()
         {
             FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
             string userData = id.Ticket.UserData;
@@ -19,7 +19,7 @@ namespace IT_Project_Management_System.Helpers
             return user;
         }
 
-        public static string getIdentityName()
+        public static string GetIdentityName()
         {
             return HttpContext.Current.User.Identity.Name;
         }

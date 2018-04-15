@@ -51,7 +51,7 @@ namespace IT_Project_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                User loggedUser = UserHelper.getUser();
+                User loggedUser = UserHelper.GetUser();
                 comment.CommentDate = DateTime.Now;
                 comment.UserID = loggedUser.UserID;
                 comment.User = db.Users.Find(loggedUser.UserID);

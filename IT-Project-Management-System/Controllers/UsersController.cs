@@ -182,7 +182,7 @@ namespace IT_Project_Management_System.Controllers
         // GET: Users/EditProfile/5
         public ActionResult EditProfile()
         {
-           User user = UserHelper.getUser();
+           User user = UserHelper.GetUser();
            User dbUser = db.Users.Find(user.UserID);
            return View(dbUser);
         }
@@ -195,7 +195,7 @@ namespace IT_Project_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.UserType = UserHelper.getUser().UserType;
+                user.UserType = UserHelper.GetUser().UserType;
                 db.Entry(user).State = EntityState.Modified;
                 SetCulture(user.Language.ToString());
                 db.SaveChanges();

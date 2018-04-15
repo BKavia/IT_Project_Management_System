@@ -50,7 +50,7 @@ namespace IT_Project_Management_System.Controllers
             Project project = db.Projects.Find(projectId);
             ViewBag.projectName = project.ProjectName;
 
-            User loggedUser = UserHelper.getUser();
+            User loggedUser = UserHelper.GetUser();
 
 
             var projectSummaries = db.ProjectSummary.Where(p => p.ProjectID == projectId).Where(u => u.UserID== loggedUser.UserID).Include(p => p.User);
@@ -94,7 +94,7 @@ namespace IT_Project_Management_System.Controllers
             Project project = db.Projects.Find(projectSummary.ProjectID);
             ViewBag.projectName = project.ProjectName;
 
-            User loggedUser = UserHelper.getUser();
+            User loggedUser = UserHelper.GetUser();
             var projectSummaries = db.ProjectSummary.Where(p => p.ProjectID == projectSummary.ProjectID).Where(u => u.UserID == loggedUser.UserID).Include(p => p.User);
             ViewBag.projectSummaries = projectSummaries;
 
@@ -114,7 +114,7 @@ namespace IT_Project_Management_System.Controllers
         [HttpPost]
         public PartialViewResult Create([Bind(Include = "NoOfTasks,NoOfTasksInProgress,NoOfTasksNotStarted,NoOfCompletedTasks,ProjectID,UserID")] ProjectSummary projectSummary)
         {
-            User loggedUser = UserHelper.getUser();
+            User loggedUser = UserHelper.GetUser();
             if (ModelState.IsValid)
             {
                 projectSummary.UserID = loggedUser.UserID;
@@ -131,7 +131,7 @@ namespace IT_Project_Management_System.Controllers
         //Used by Ajax to delete the ProjectSummary. Returns a Partial View to update the User Interface.
         public PartialViewResult Delete(int id)
         {
-            User loggedUser = UserHelper.getUser();
+            User loggedUser = UserHelper.GetUser();
             ProjectSummary projectSummary = db.ProjectSummary.Find(id);
             if (projectSummary != null)
             {

@@ -11,7 +11,7 @@
 }
 
 <h2>@Resources.Resource.Tasks</h2>
-@{ UserType userType = UserHelper.getUser().UserType;}
+@{ UserType userType = UserHelper.GetUser().UserType;}
 @using (Html.BeginForm())
 {
     @Html.Hidden("SearchString", (object)ViewBag.CurrentFilter)
