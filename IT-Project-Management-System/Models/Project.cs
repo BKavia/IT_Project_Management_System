@@ -26,13 +26,13 @@ namespace IT_Project_Management_System.Models
         //Name of the project
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectNameRequired")]
         [Display(Name = "ProjectName", ResourceType = typeof(Resources.Resource))]
-        [StringLength(100)]
+        [MaxLength(50)]
         public virtual string ProjectName { get; set; }
 
         //Description of the project
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "ProjectDescriptionRequired")]
         [Display(Name = "ProjectDescription", ResourceType = typeof(Resources.Resource))]
-        [StringLength(200)]
+        [MaxLength(200)]
         public virtual string ProjectDescription { get; set; }
         
         //The date the project started
@@ -69,4 +69,6 @@ namespace IT_Project_Management_System.Models
         Completed
     
     }
+
+   
 }

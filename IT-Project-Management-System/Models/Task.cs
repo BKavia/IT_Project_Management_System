@@ -23,7 +23,7 @@ namespace IT_Project_Management_System.Models
         //The task name
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "TaskNameRequired")]
         [Display(Name = "TaskName", ResourceType = typeof(Resources.Resource))]
-        [MaxLength(100)]
+        [MaxLength(50)]
         public virtual string TaskName { get; set; }
 
         //The description

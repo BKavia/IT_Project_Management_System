@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using IT_Project_Management_System.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -55,6 +57,7 @@ namespace IT_Project_Management_System.Tests
             Assert.AreEqual(pr.ProjectStatus, ps);
                         
         }
+        
     }
 }
 
