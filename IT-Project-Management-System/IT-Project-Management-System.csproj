@@ -289,10 +289,6 @@
     </Compile>
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
-    <Compile Include="Migrations\201804151807077_updatemodel.cs" />
-    <Compile Include="Migrations\201804151807077_updatemodel.Designer.cs">
-      <DependentUpon>201804151807077_updatemodel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ProjectSummary.cs" />
     <Compile Include="Models\Task.cs" />
@@ -363,10 +359,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
     <Folder Include="UploadedFiles\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\ErrorHandler\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -380,11 +373,6 @@
       <Project>{E0C2EF9C-F425-4871-BEAB-CAF7BD2C9BCC}</Project>
       <Name>Resources</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804151807077_updatemodel.resx">
-      <DependentUpon>201804151807077_updatemodel.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

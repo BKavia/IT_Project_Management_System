@@ -97,6 +97,11 @@ namespace IT_Project_Management_System.Controllers
                 ModelState.AddModelError("UserName", @Resources.Resource.UserNameTaken);
 
             }
+            if (db.Users.Any(u => u.Email == user.Email))
+            {
+                ModelState.AddModelError("Email", @Resources.Resource.Emailhasbeentaken);
+
+            }
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);

@@ -1,7 +1,5 @@
 ﻿@model IT_Project_Management_System.Models.Document
 
-
-
 @using (Ajax.BeginForm("UploadFile", "Documents", null, new AjaxOptions
 {
     InsertionMode = InsertionMode.Replace,
@@ -26,10 +24,7 @@
         </div>
 
     </div>
-
-
 }
-
 <script>
     window.addEventListener("submit", function (e) {
         var form = e.target;
@@ -53,5 +48,4 @@
             }
         }
     }, true);
-    </script>
-
+  </script>

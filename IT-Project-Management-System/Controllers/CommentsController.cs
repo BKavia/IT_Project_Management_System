@@ -8,6 +8,7 @@ using IT_Project_Management_System.Models;
 
 namespace IT_Project_Management_System.Controllers
 {
+    //Controller for Comments
     [Authorize]
     public class CommentsController : BaseController
     {
@@ -65,8 +66,7 @@ namespace IT_Project_Management_System.Controllers
         
             return PartialView("~/Views/Comments/_PartialCommentList.cshtml", task);
         }
-
-       
+               
         // GET: Comments/Edit/5
         public ActionResult Edit(int? id)
         {

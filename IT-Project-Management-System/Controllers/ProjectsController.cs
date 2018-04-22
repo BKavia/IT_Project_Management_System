@@ -52,13 +52,11 @@ namespace IT_Project_Management_System.Controllers
                     projects = projects.OrderBy(p => p.ProjectName);
                     break;
             }
-
-            
+                
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             return View(projects.ToPagedList(pageNumber, pageSize));
-
-        }
+            }
 
         //Load the Projects for the Details View
         // GET: Projects/Details/5

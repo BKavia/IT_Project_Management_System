@@ -8,7 +8,7 @@ namespace IT_Project_Management_System.Helpers
     public static class CultureHelper
     {
        
-        //Langiages supported
+        //Language supported
         private static readonly List<string> _cultures = new List<string> {
         "en-GB",  // DEFAULT english language
         "es", // Spanish

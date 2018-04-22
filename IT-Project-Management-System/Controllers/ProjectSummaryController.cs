@@ -51,8 +51,7 @@ namespace IT_Project_Management_System.Controllers
             ViewBag.projectName = project.ProjectName;
 
             User loggedUser = UserHelper.GetUser();
-
-
+            
             var projectSummaries = db.ProjectSummary.Where(p => p.ProjectID == projectId).Where(u => u.UserID== loggedUser.UserID).Include(p => p.User);
             ViewBag.projectSummaries = projectSummaries;
 
@@ -107,7 +106,6 @@ namespace IT_Project_Management_System.Controllers
                 ProjectID = projectSummary.ProjectID
             };
             return View("ProjectSummary", ps);
-
         }
 
         //Used by Ajax to save Project Summary into database. Returns a Partial View to update the User Interface.
@@ -121,7 +119,6 @@ namespace IT_Project_Management_System.Controllers
                 projectSummary.ReportDate = DateTime.Now;
                 db.ProjectSummary.Add(projectSummary);
                 db.SaveChanges();
-
             }
 
             var projectSummaries = db.ProjectSummary.Where(p => p.ProjectID == projectSummary.ProjectID).Where(u => u.UserID == loggedUser.UserID).Include(p => p.User);
@@ -146,10 +143,5 @@ namespace IT_Project_Management_System.Controllers
         {
             return View();
         }
-
-             
-      
-
-       
     }
 }

@@ -70,15 +70,10 @@ namespace IT_Project_Management_System.Controllers
                     }
                     else {
                         return RedirectToAction("Index", "Tasks");
-
                     }
-
                 }
             }
-            
             return View(user);
         }
-     
-
     }
 }

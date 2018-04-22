@@ -438,4 +438,7 @@
   <data name="MyTasksOnly" xml:space="preserve">
     <value>Mis tareas solo</value>
   </data>
+  <data name="Emailhasbeentaken" xml:space="preserve">
+    <value>El correo electrónico ha sido tomado</value>
+  </data>
 </root>

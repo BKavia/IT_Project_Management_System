@@ -42,29 +42,25 @@
             <div class="progress-bar bg-danger" role="progressbar" style="width:  @ViewBag.percNoOfTasksNotStarted%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         @using (Ajax.BeginForm("Create", "ProjectSummary", null, new AjaxOptions
-    {
-        InsertionMode = InsertionMode.Replace,
-        AllowCache = false,
-        UpdateTargetId = "ProjectSummaryDiv",
-    }))
-    {
-        @Html.HiddenFor(model => model.NoOfTasks)
-        @Html.HiddenFor(model => model.NoOfTasksInProgress)
-        @Html.HiddenFor(model => model.NoOfTasksNotStarted)
-        @Html.HiddenFor(model => model.NoOfCompletedTasks)
-        @Html.HiddenFor(model => model.ProjectID)
-        @Html.HiddenFor(model => model.UserID)
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@Resources.Resource.Save" id="submit" class="btn btn-primary" />
+        {
+            InsertionMode = InsertionMode.Replace,
+            AllowCache = false,
+            UpdateTargetId = "ProjectSummaryDiv",
+        }))
+        {
+            @Html.HiddenFor(model => model.NoOfTasks)
+            @Html.HiddenFor(model => model.NoOfTasksInProgress)
+            @Html.HiddenFor(model => model.NoOfTasksNotStarted)
+            @Html.HiddenFor(model => model.NoOfCompletedTasks)
+            @Html.HiddenFor(model => model.ProjectID)
+            @Html.HiddenFor(model => model.UserID)
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Resources.Resource.Save" id="submit" class="btn btn-primary" />
+                </div>
             </div>
-        </div>
-}
-
+        }
     </div>
-
-
-
 
     <div id="ProjectSummaryDiv">
         @{Html.RenderPartial("~/Views/ProjectSummary/_PartialProjectSummarylist.cshtml", (IEnumerable<IT_Project_Management_System.Models.ProjectSummary>)ViewBag.projectSummaries);}
@@ -73,3 +69,4 @@
     <div>
         @Html.ActionLink(Resources.Resource.BackToList, "Index", "Projects", null, null)
     </div>
+</div>

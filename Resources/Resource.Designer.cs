@@ -322,6 +322,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email has been taken.
+        /// </summary>
+        public static string Emailhasbeentaken {
+            get {
+                return ResourceManager.GetString("Emailhasbeentaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End date should be greater than start date.
         /// </summary>
         public static string Enddateshouldbegraterthanstartdate {

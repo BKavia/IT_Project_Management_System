@@ -87,7 +87,6 @@ namespace IT_Project_Management_System.Controllers
             return View(ts.ToPagedList(pageNumber, pageSize));
            
         }
-
         //Load the Task for the Details View
         // GET: Tasks/Details/5
         public ActionResult Details(int? id)

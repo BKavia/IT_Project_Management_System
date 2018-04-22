@@ -69,6 +69,4 @@ namespace IT_Project_Management_System.Models
         Completed
     
     }
-
-   
 }
